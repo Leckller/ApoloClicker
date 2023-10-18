@@ -33,6 +33,12 @@ export const AdvocaciaProducts = [
     nome: 'Capsula de Café 10u',
     preco: 200,
     imagem: 'x',
-    id: 5,
+    id: 6,
+  },
+  {
+    nome: 'Melhoria no computador',
+    preco: 370,
+    imagem: 'x',
+    id: 7,
   },
 ];

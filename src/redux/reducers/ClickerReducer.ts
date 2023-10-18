@@ -5,8 +5,8 @@ const key = 'Clicker';
 const local = JSON.parse(localStorage.getItem(key) as string);
 
 const InitialState = {
-  Clicks: local.Clicks,
-  Dinheiro: local.Dinheiro,
+  Clicks: localStorage.getItem(key) ? local.Clicks : 0,
+  Dinheiro: localStorage.getItem(key) ? local.Dinheiro : 0,
 };
 
 const ClickerReducer = (state = InitialState, action: AnyAction) => {

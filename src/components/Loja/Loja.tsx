@@ -4,11 +4,11 @@ import { DivProduct, DivProducts, DivProductsNFilters,
 import { AdvocaciaProducts } from './Produtos';
 
 function Loja({ setLoja, loja }: { setLoja: (p: boolean) => void, loja: boolean }) {
-  const { store } = useStoreHook();
+  const { store: { ClickerReducer: { Dinheiro } } } = useStoreHook();
   return (
     <LojaSection>
       <LojaDivHeader>
-        <h2>{`R$ ${store.ClickerReducer.Dinheiro.toFixed(2)}`}</h2>
+        <h2>{`R$ ${Dinheiro.toFixed(2)}`}</h2>
         <h1>
           Actual Filter
         </h1>
@@ -25,7 +25,12 @@ function Loja({ setLoja, loja }: { setLoja: (p: boolean) => void, loja: boolean 
               <h3>{e.nome}</h3>
               <img src={ e.imagem } alt={ `Imagem de ${e.nome}` } />
               <h4>{`R$ ${e.preco}`}</h4>
-              <button>Comprar</button>
+              <button
+                disabled={ (Dinheiro < e.preco) }
+              >
+                Comprar
+
+              </button>
             </DivProduct>
           ))}
         </DivProducts>
