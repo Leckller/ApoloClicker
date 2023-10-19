@@ -1,9 +1,9 @@
-import { LojaDivHeader, LojaSection } from '../Loja/LojaStyle';
+import { ApoloDivContent, ApoloDivHeader, ApoloSection, DivApoloBox } from './ApoloStyle';
 
 function Apolo({ setApolo, apolo }: { setApolo: (p: boolean) => void, apolo: boolean }) {
   return (
-    <LojaSection>
-      <LojaDivHeader>
+    <ApoloSection>
+      <ApoloDivHeader>
         <h1>
           Apolo
         </h1>
@@ -12,8 +12,11 @@ function Apolo({ setApolo, apolo }: { setApolo: (p: boolean) => void, apolo: boo
         >
           X
         </button>
-      </LojaDivHeader>
-    </LojaSection>
+      </ApoloDivHeader>
+      <DivApoloBox>
+        <ApoloDivContent />
+      </DivApoloBox>
+    </ApoloSection>
   );
 }
 
