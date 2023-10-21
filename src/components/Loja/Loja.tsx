@@ -1,10 +1,11 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
+import { buyItem, levelUp } from '../../redux/actions/ClickDedeAction';
 import { DivProduct, DivProducts, DivProductsNFilters,
   LojaDivHeader, LojaSection } from './LojaStyle';
 import { AdvocaciaProducts } from './Produtos';
 
 function Loja({ setLoja, loja }: { setLoja: (p: boolean) => void, loja: boolean }) {
-  const { store: { ClickerReducer: { Dinheiro } } } = useStoreHook();
+  const { store: { ClickerReducer: { Dinheiro, Itens } }, dispatch } = useStoreHook();
   return (
     <LojaSection>
       <LojaDivHeader>
@@ -20,19 +21,31 @@ function Loja({ setLoja, loja }: { setLoja: (p: boolean) => void, loja: boolean 
       </LojaDivHeader>
       <DivProductsNFilters>
         <DivProducts>
-          {AdvocaciaProducts.map((e) => (
-            <DivProduct key={ e.id }>
-              <h3>{e.nome}</h3>
-              <img src={ e.imagem } alt={ `Imagem de ${e.nome}` } />
-              <h4>{`R$ ${e.preco}`}</h4>
-              <button
-                disabled={ (Dinheiro < e.preco) }
-              >
-                Comprar
-
-              </button>
-            </DivProduct>
-          ))}
+          {AdvocaciaProducts.filter((e) => Itens
+            .find((ef) => ef.name === e.nome)?.name !== e.nome)
+            .map((e) => (
+              <DivProduct key={ e.id }>
+                <h3>{e.nome}</h3>
+                <img src={ e.imagem } alt={ `Imagem de ${e.nome}` } />
+                <h4>{`R$ ${e.preco}`}</h4>
+                <button
+                  onClick={ () => {
+                    dispatch(buyItem({
+                      name: e.nome,
+                      preco: e.preco,
+                      tipo: e.tipo,
+                      level: e.level,
+                      dX: e.dX,
+                      mX: e.mX,
+                    }));
+                    dispatch(levelUp(e.level));
+                  } }
+                  disabled={ (Dinheiro < e.preco) }
+                >
+                  Comprar
+                </button>
+              </DivProduct>
+            ))}
         </DivProducts>
         <div>search</div>
       </DivProductsNFilters>

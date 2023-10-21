@@ -38,3 +38,19 @@ export const ApoloDivContent = styled.div`
   height: 100%;
   overflow-y: auto;
 `;
+
+export const ApoloProducts = styled.div`
+display: flex;
+flex-flow: column nowrap;
+justify-content: space-around;
+align-items: center;
+border: solid black 2px;
+border-radius: 10%;
+margin: 1vh;
+width: 30%;
+height: 50%;
+button {
+  width: 80%;
+  height: 15%;
+}
+`;

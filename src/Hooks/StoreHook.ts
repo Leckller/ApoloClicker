@@ -8,13 +8,16 @@ export function useStoreHook() {
   const store = useSelector((state:GlobalState) => state);
   useEffect(() => {
     const Dede = setTimeout(() => {
-      dispatch(clickDede(0.2, 1));
+      const { ClickerReducer: { dX, mX } } = store;
+      dispatch(clickDede(mX, dX));
+      // mx multiplicador, dX dinheiro multiplicado
     }, 1000);
     const effect = () => {
       return Dede;
     };
     effect();
     return () => clearTimeout(Dede);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [store.ClickerReducer.Dinheiro]);
   return { store, dispatch };
 }
