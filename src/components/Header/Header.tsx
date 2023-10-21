@@ -10,7 +10,7 @@ function Header() {
         <h2>Dia 1 - 00:00</h2>
       </DivBlockHPadrao>
       <div>
-        <h1>Apolo Clicker</h1>
+        <h1>Apolo Clicker Beta 0.1</h1>
       </div>
       <DivBlockHPadrao>
         {

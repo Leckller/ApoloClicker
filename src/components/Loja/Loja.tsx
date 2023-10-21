@@ -47,7 +47,6 @@ function Loja({ setLoja, loja }: { setLoja: (p: boolean) => void, loja: boolean 
               </DivProduct>
             ))}
         </DivProducts>
-        <div>search</div>
       </DivProductsNFilters>
     </LojaSection>
   );

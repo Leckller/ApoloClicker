@@ -42,7 +42,7 @@ export const DivProductsNFilters = styled.div`
 export const DivProducts = styled.div`
   display: flex;
   flex-flow: row wrap;
-  width: 80%;
+  width: 100%;
   height: 100%;
   overflow-y: auto;
 `;
@@ -54,7 +54,7 @@ export const DivProduct = styled.div`
   align-items: center;
   border: solid black 2px;
   border-radius: 10%;
-  margin: 1vh;
+  margin: .5vh;
   width: 30%;
   height: 50%;
   button {
