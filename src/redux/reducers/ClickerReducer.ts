@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { BUY_ITEM, CLICK_DEDE } from '../actions/ClickDedeAction';
+import { BUY_ITEM, CLICK_DEDE, LEVEL_UP, SELL_ITEM } from '../actions/ClickDedeAction';
 import { ItensType } from '../../types';
 
 const key = 'Clicker';
@@ -37,6 +37,20 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         Dinheiro: state.Dinheiro - action.payload.item.preco,
         mX: state.mX + action.payload.item.mX,
         dX: state.dX + action.payload.item.dX,
+      };
+    }
+    case LEVEL_UP: {
+      return {
+        ...state,
+      };
+    }
+    case SELL_ITEM: {
+      return { ...state,
+        Itens: state.Itens
+          .filter((e: ItensType) => e !== action.payload.item),
+        Dinheiro: state.Dinheiro + action.payload.value,
+        dX: state.dX - action.payload.dX,
+        mX: state.mX - action.payload.mX,
       };
     }
     default: {
