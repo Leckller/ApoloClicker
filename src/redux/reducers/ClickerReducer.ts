@@ -42,12 +42,19 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
     case LEVEL_UP: {
       return {
         ...state,
+        mX: state.mX - action.payload.mX * (action.payload.level - 1)
+        + action.payload.mX * action.payload.level,
+        Dinheiro: state.Dinheiro - (action.payload.preco
+         + (action.payload.preco / 2) * action.payload.level),
+        Itens: [...state.Itens.filter((e:ItensType) => e !== action.payload), {
+          ...action.payload, level: action.payload.level + 1,
+        }],
       };
     }
     case SELL_ITEM: {
       return { ...state,
-        Itens: state.Itens
-          .filter((e: ItensType) => e !== action.payload.item),
+        Itens: [...state.Itens
+          .filter((e: ItensType) => e !== action.payload.item)],
         Dinheiro: state.Dinheiro + action.payload.value,
         dX: state.dX - action.payload.dX,
         mX: state.mX - action.payload.mX,

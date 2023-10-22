@@ -29,9 +29,9 @@ export const buyItem = (item: {
 
 export const LEVEL_UP = 'LEVEL_UP';
 
-export const levelUp = (level: number) => ({
+export const levelUp = (item: ItensType) => ({
   type: LEVEL_UP,
-  payload: level,
+  payload: item,
 });
 
 export const SELL_ITEM = 'SELL_ITEM';

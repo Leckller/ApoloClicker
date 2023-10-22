@@ -1,10 +1,10 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
-import { sellItem } from '../../redux/actions/ClickDedeAction';
+import { levelUp, sellItem } from '../../redux/actions/ClickDedeAction';
 import { ApoloDivContent, ApoloDivHeader,
   ApoloProducts, ApoloSection, DivApoloBox } from './ApoloStyle';
 
 function Apolo({ setApolo, apolo }: { setApolo: (p: boolean) => void, apolo: boolean }) {
-  const { store: { ClickerReducer: { Itens } }, dispatch } = useStoreHook();
+  const { store: { ClickerReducer: { Itens, Dinheiro } }, dispatch } = useStoreHook();
   return (
     <ApoloSection>
       <ApoloDivHeader>
@@ -23,7 +23,10 @@ function Apolo({ setApolo, apolo }: { setApolo: (p: boolean) => void, apolo: boo
           // preciso da imagem
             <ApoloProducts key={ i }>
               <h2>{`${e.name} - level ${e.level}`}</h2>
-              <button>
+              <button
+                onClick={ () => dispatch(levelUp(e)) }
+                disabled={ Dinheiro < e.preco + (e.preco / 2) * e.level }
+              >
                 {`Melhorar - R$${
                   e.preco + (e.preco / 2) * e.level}`}
               </button>
