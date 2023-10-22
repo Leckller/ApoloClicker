@@ -1,6 +1,6 @@
 export const AdvocaciaProducts = [
   {
-    nome: 'Cafeteira',
+    name: 'Cafeteira',
     preco: 250,
     imagem: 'x',
     id: 1,
@@ -10,7 +10,7 @@ export const AdvocaciaProducts = [
     level: 1,
   },
   {
-    nome: 'Raul',
+    name: 'Raul',
     preco: 2500,
     imagem: 'x',
     id: 2,
@@ -20,7 +20,7 @@ export const AdvocaciaProducts = [
     level: 1,
   },
   {
-    nome: 'Jefinho',
+    name: 'Jefinho',
     preco: 5000,
     imagem: 'x',
     id: 3,
@@ -30,7 +30,7 @@ export const AdvocaciaProducts = [
     level: 1,
   },
   {
-    nome: 'StarLink Wifi',
+    name: 'StarLink Wifi',
     preco: 2000,
     imagem: 'x',
     id: 4,
@@ -40,7 +40,7 @@ export const AdvocaciaProducts = [
     level: 1,
   },
   {
-    nome: 'Claro Wifi',
+    name: 'Claro Wifi',
     preco: 200,
     imagem: 'x',
     id: 5,
@@ -50,7 +50,7 @@ export const AdvocaciaProducts = [
     level: 1,
   },
   {
-    nome: 'Capsula de Café 10u',
+    name: 'Capsula de Café 10u',
     preco: 200,
     imagem: 'x',
     id: 6,
@@ -60,7 +60,7 @@ export const AdvocaciaProducts = [
     level: 1,
   },
   {
-    nome: 'Melhoria no computador',
+    name: 'Melhoria no computador',
     preco: 370,
     imagem: 'x',
     id: 7,

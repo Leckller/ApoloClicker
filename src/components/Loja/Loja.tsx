@@ -1,5 +1,5 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
-import { buyItem, levelUp } from '../../redux/actions/ClickDedeAction';
+import { buyItem } from '../../redux/actions/ClickDedeAction';
 import { DivProduct, DivProducts, DivProductsNFilters,
   LojaDivHeader, LojaSection } from './LojaStyle';
 import { AdvocaciaProducts } from './Produtos';
@@ -22,23 +22,22 @@ function Loja({ setLoja, loja }: { setLoja: (p: boolean) => void, loja: boolean 
       <DivProductsNFilters>
         <DivProducts>
           {AdvocaciaProducts.filter((e) => Itens
-            .find((ef) => ef.name === e.nome)?.name !== e.nome)
+            .find((ef) => ef.name === e.name)?.name !== e.name)
             .map((e) => (
               <DivProduct key={ e.id }>
-                <h3>{e.nome}</h3>
-                <img src={ e.imagem } alt={ `Imagem de ${e.nome}` } />
+                <h3>{e.name}</h3>
+                <img src={ e.imagem } alt={ `Imagem de ${e.name}` } />
                 <h4>{`R$ ${e.preco}`}</h4>
                 <button
                   onClick={ () => {
                     dispatch(buyItem({
-                      name: e.nome,
+                      name: e.name,
                       preco: e.preco,
                       tipo: e.tipo,
                       level: e.level,
                       dX: e.dX,
                       mX: e.mX,
                     }));
-                    dispatch(levelUp(e.level));
                   } }
                   disabled={ (Dinheiro < e.preco) }
                 >
