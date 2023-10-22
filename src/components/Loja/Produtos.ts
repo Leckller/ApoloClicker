@@ -8,7 +8,7 @@ export const AdvocaciaProducts = [
     mX: 1,
     dX: 0,
     level: 1,
-    desc: 'Aumenta o múltiplicador dos ganhos em 1',
+    desc: 'Aumenta o multiplicador dos ganhos em 1',
   },
   {
     name: 'Raul',
@@ -19,7 +19,7 @@ export const AdvocaciaProducts = [
     mX: 0,
     dX: 2,
     level: 1,
-    desc: 'Aumenta o múltiplicador de dinheiro em 2',
+    desc: 'Aumenta o multiplicador de dinheiro em 2',
   },
   {
     name: 'Jefinho',
@@ -30,7 +30,7 @@ export const AdvocaciaProducts = [
     mX: 1,
     dX: 1,
     level: 1,
-    desc: 'Aumenta o múltiplicador de dinheiro e os ganhos em 1',
+    desc: 'Aumenta o multiplicador de dinheiro e os ganhos em 1',
   },
   {
     name: 'StarLink Wifi',
@@ -41,7 +41,7 @@ export const AdvocaciaProducts = [
     mX: 2,
     dX: 0,
     level: 1,
-    desc: 'Aumenta o múltiplicador de ganhos em 2',
+    desc: 'Aumenta o multiplicador de ganhos em 2',
   },
   {
     name: 'Claro Wifi',
@@ -52,7 +52,7 @@ export const AdvocaciaProducts = [
     mX: 1,
     dX: 0,
     level: 1,
-    desc: 'Aumenta o múltiplicador de ganhos em 1',
+    desc: 'Aumenta o multiplicador de ganhos em 1',
   },
   {
     name: 'Capsula de Café 10u',
@@ -74,6 +74,6 @@ export const AdvocaciaProducts = [
     mX: 1,
     dX: 0,
     level: 1,
-    desc: 'Aumenta o múltiplicador dos ganhos em 1',
+    desc: 'Aumenta o multiplicador dos ganhos em 1',
   },
 ];
