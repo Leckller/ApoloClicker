@@ -27,6 +27,7 @@ function Loja({ setLoja, loja }: { setLoja: (p: boolean) => void, loja: boolean 
               <DivProduct key={ e.id }>
                 <h3>{e.nome}</h3>
                 <img src={ e.imagem } alt={ `Imagem de ${e.nome}` } />
+                <h4>{e.desc}</h4>
                 <h4>{`R$ ${e.preco}`}</h4>
                 <button
                   onClick={ () => {
