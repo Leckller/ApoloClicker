@@ -1,5 +1,8 @@
+/* eslint-disable react-func/max-lines-per-function */
+/* eslint-disable no-alert */
 import { AnyAction } from 'redux';
-import { BUY_ITEM, CLICK_DEDE, LEVEL_UP, SELL_ITEM } from '../actions/ClickDedeAction';
+import { AUTO_CLICK, BUY_ITEM, CLICK_DEDE, LEVEL_UP,
+  SELL_ITEM } from '../actions/ClickDedeAction';
 import { ItensType } from '../../types';
 
 const key = 'Clicker';
@@ -11,6 +14,7 @@ const InitialState = {
   mX: localStorage.getItem(key) ? local.mX : 0.2,
   dX: localStorage.getItem(key) ? local.dX : 1,
   Itens: localStorage.getItem(key) ? local.Itens : [],
+  DinheiroPassivo: 0,
 };
 
 const ClickerReducer = (state = InitialState, action: AnyAction) => {
@@ -22,9 +26,20 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         Clicks: state.Clicks + 1,
         Dinheiro: action.payload.x + state.Dinheiro };
     }
+    case AUTO_CLICK: {
+      if (state.DinheiroPassivo !== action.payload.x) {
+        return { ...state,
+          DinheiroPassivo: action.payload.x,
+        };
+      }
+      return {
+        ...state,
+        DinheiroPassivo: state.DinheiroPassivo + action.payload.x,
+        Dinheiro: state.Dinheiro + state.DinheiroPassivo,
+      };
+    }
     case BUY_ITEM: {
       if (state.Itens.some((e: ItensType) => e.name === action.payload.item.name)) {
-        // eslint-disable-next-line no-alert
         alert('Você já possui este item!');
         return { ...state };
       }

@@ -14,5 +14,6 @@ export type GlobalState = {
     mX: number,
     dX: number,
     Itens: ItensType[],
+    DinheiroPassivo: number,
   }
 };
