@@ -24,12 +24,9 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
     }
     case BUY_ITEM: {
       if (state.Itens.some((e: ItensType) => e.name === action.payload.item.name)) {
-        // previne a repetição de compra nos itens
         // eslint-disable-next-line no-alert
         alert('Você já possui este item!');
-        return {
-          ...state,
-        };
+        return { ...state };
       }
       return {
         ...state,
@@ -44,6 +41,8 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         ...state,
         mX: state.mX - action.payload.mX * (action.payload.level - 1)
         + action.payload.mX * action.payload.level,
+        dX: state.dX - action.payload.dX * (action.payload.level - 1)
+        + action.payload.dX * action.payload.level,
         Dinheiro: state.Dinheiro - (action.payload.preco
          + (action.payload.preco / 2) * action.payload.level),
         Itens: [...state.Itens.filter((e:ItensType) => e !== action.payload), {
@@ -56,8 +55,8 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         Itens: [...state.Itens
           .filter((e: ItensType) => e !== action.payload.item)],
         Dinheiro: state.Dinheiro + action.payload.value,
-        dX: state.dX - action.payload.dX,
-        mX: state.mX - action.payload.mX,
+        dX: state.dX - (action.payload.item.dX * action.payload.item.level),
+        mX: state.mX - (action.payload.item.mX * action.payload.item.level),
       };
     }
     default: {

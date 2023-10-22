@@ -22,7 +22,7 @@ function Main() {
         <div>
           <button
             onClick={
-            () => dispatch(clickDede(100))
+            () => dispatch(clickDede(10000))
           }
           >
             <img src="" alt="Tio Dedé" />

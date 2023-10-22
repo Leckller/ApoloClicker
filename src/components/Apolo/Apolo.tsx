@@ -19,7 +19,7 @@ function Apolo({ setApolo, apolo }: { setApolo: (p: boolean) => void, apolo: boo
       </ApoloDivHeader>
       <DivApoloBox>
         <ApoloDivContent>
-          {Itens.map((e, i) => (
+          {Itens.sort((a, b) => a.level < b.level).map((e, i) => (
           // preciso da imagem
             <ApoloProducts key={ i }>
               <h2>{`${e.name} - level ${e.level}`}</h2>
