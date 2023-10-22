@@ -6,7 +6,7 @@ import Loja from '../Loja/Loja';
 import Apolo from '../Apolo/Apolo';
 
 function Main() {
-  const { dispatch, store: { ClickerReducer: { dX } } } = useStoreHook();
+  const { dispatch, store: { ClickerReducer: { dX, mX } } } = useStoreHook();
   const [loja, setLoja] = useState(false);
   const [apolo, setApolo] = useState(false);
   return (
@@ -22,7 +22,7 @@ function Main() {
         <div>
           <button
             onClick={
-            () => dispatch(clickDede(dX))
+            () => dispatch(clickDede(mX * 1.2, dX))
           }
           >
             <img src="" alt="Tio Dedé" />

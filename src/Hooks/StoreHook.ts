@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { GlobalState } from '../types';
-import { clickDede } from '../redux/actions/ClickDedeAction';
+import { autoClick } from '../redux/actions/ClickDedeAction';
 
 export function useStoreHook() {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ export function useStoreHook() {
   useEffect(() => {
     const Dede = setTimeout(() => {
       const { ClickerReducer: { dX, mX } } = store;
-      dispatch(clickDede(mX, dX));
+      dispatch(autoClick(mX, dX));
       // mx multiplicador, dX dinheiro multiplicado
     }, 1000);
     const effect = () => {
@@ -18,6 +18,6 @@ export function useStoreHook() {
     effect();
     return () => clearTimeout(Dede);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [store.ClickerReducer.Dinheiro]);
+  }, [store.ClickerReducer.DinheiroPassivo]);
   return { store, dispatch };
 }

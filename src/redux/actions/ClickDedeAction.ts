@@ -45,3 +45,12 @@ export const sellItem = (item: ItensType, value:number, mX: number, dX: number) 
     dX,
   },
 });
+
+export const AUTO_CLICK = 'AUTO_CLICK';
+
+export const autoClick = (multiplicador: number = 1, Ganho: number = 1) => ({
+  type: AUTO_CLICK,
+  payload: {
+    x: Number(multiplicador * Ganho),
+  },
+});
