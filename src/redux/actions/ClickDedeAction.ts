@@ -1,3 +1,5 @@
+import { ItensType } from '../../types';
+
 export const CLICK_DEDE = 'CLICK_DEDE';
 
 export const clickDede = (multiplicador: number = 1, Ganho: number = 1) => ({
@@ -27,7 +29,19 @@ export const buyItem = (item: {
 
 export const LEVEL_UP = 'LEVEL_UP';
 
-export const levelUp = (level: number) => ({
+export const levelUp = (item: ItensType) => ({
   type: LEVEL_UP,
-  payload: level,
+  payload: item,
+});
+
+export const SELL_ITEM = 'SELL_ITEM';
+
+export const sellItem = (item: ItensType, value:number, mX: number, dX: number) => ({
+  type: SELL_ITEM,
+  payload: {
+    item,
+    value,
+    mX,
+    dX,
+  },
 });

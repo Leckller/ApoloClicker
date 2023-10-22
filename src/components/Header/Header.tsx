@@ -7,10 +7,10 @@ function Header() {
   return (
     <HeaderS>
       <DivBlockHPadrao>
-        <h2>Dia 1 - 00:00</h2>
+        <button>Configurações</button>
       </DivBlockHPadrao>
       <div>
-        <h1>Apolo Clicker Beta 0.1</h1>
+        <h1>Apolo Clicker Beta 0.2</h1>
       </div>
       <DivBlockHPadrao>
         {

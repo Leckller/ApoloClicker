@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { BUY_ITEM, CLICK_DEDE } from '../actions/ClickDedeAction';
+import { BUY_ITEM, CLICK_DEDE, LEVEL_UP, SELL_ITEM } from '../actions/ClickDedeAction';
 import { ItensType } from '../../types';
 
 const key = 'Clicker';
@@ -24,12 +24,9 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
     }
     case BUY_ITEM: {
       if (state.Itens.some((e: ItensType) => e.name === action.payload.item.name)) {
-        // previne a repetição de compra nos itens
         // eslint-disable-next-line no-alert
         alert('Você já possui este item!');
-        return {
-          ...state,
-        };
+        return { ...state };
       }
       return {
         ...state,
@@ -37,6 +34,29 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         Dinheiro: state.Dinheiro - action.payload.item.preco,
         mX: state.mX + action.payload.item.mX,
         dX: state.dX + action.payload.item.dX,
+      };
+    }
+    case LEVEL_UP: {
+      return {
+        ...state,
+        mX: state.mX - action.payload.mX * (action.payload.level - 1)
+        + action.payload.mX * action.payload.level,
+        dX: state.dX - action.payload.dX * (action.payload.level - 1)
+        + action.payload.dX * action.payload.level,
+        Dinheiro: state.Dinheiro - (action.payload.preco
+         + (action.payload.preco / 2) * action.payload.level),
+        Itens: [...state.Itens.filter((e:ItensType) => e !== action.payload), {
+          ...action.payload, level: action.payload.level + 1,
+        }],
+      };
+    }
+    case SELL_ITEM: {
+      return { ...state,
+        Itens: [...state.Itens
+          .filter((e: ItensType) => e !== action.payload.item)],
+        Dinheiro: state.Dinheiro + action.payload.value,
+        dX: state.dX - (action.payload.item.dX * action.payload.item.level),
+        mX: state.mX - (action.payload.item.mX * action.payload.item.level),
       };
     }
     default: {
