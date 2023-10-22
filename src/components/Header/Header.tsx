@@ -10,7 +10,7 @@ function Header() {
         <button>Configurações</button>
       </DivBlockHPadrao>
       <div>
-        <h1>Apolo Clicker Beta 0.1</h1>
+        <h1>Apolo Clicker Beta 0.2</h1>
       </div>
       <DivBlockHPadrao>
         {
