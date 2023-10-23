@@ -11,6 +11,7 @@ export type GlobalState = {
   ClickerReducer: {
     Clicks: number,
     Dinheiro: number,
+    Sprite: number,
     mX: number,
     dX: number,
     Itens: ItensType[],

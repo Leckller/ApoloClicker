@@ -54,5 +54,6 @@ export const MainSMobile = styled.main`
 export const ImageDede = styled.img`
   width: 150%;
   height: 100%;
-  border: solid black 10px
+  border: solid black 10px;
+  z-index: -1000;
 `;
