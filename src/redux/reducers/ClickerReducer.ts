@@ -13,6 +13,7 @@ const InitialState = {
   Dinheiro: localStorage.getItem(key) ? local.Dinheiro : 0,
   mX: localStorage.getItem(key) ? local.mX : 0.2,
   dX: localStorage.getItem(key) ? local.dX : 1,
+  Sprite: 1,
   Itens: localStorage.getItem(key) ? local.Itens : [],
   DinheiroPassivo: 0,
 };
@@ -24,7 +25,8 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
       localStorage.setItem(key, JSON.stringify(actState));
       return { ...state,
         Clicks: state.Clicks + 1,
-        Dinheiro: action.payload.x + state.Dinheiro };
+        Dinheiro: action.payload.x + state.Dinheiro,
+        Sprite: state.Sprite === 1 ? 2 : 1 };
     }
     case AUTO_CLICK: {
       if (state.DinheiroPassivo !== action.payload.x) {
