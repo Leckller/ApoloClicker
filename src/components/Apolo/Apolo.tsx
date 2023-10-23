@@ -12,7 +12,10 @@ function Apolo() {
       <ApoloSectionMobile>
         <DivApoloBoxMobile>
           <ApoloDivContentMobile>
-            {Itens.map((e, i) => (
+            {Itens.sort((a, b) => {
+              if (a.preco < b.preco) return 1;
+              return 0;
+            }).map((e, i) => (
               // preciso da imagem
               <ApoloProductsMobile key={ i }>
                 <h2>{`${e.name} - level ${e.level}`}</h2>
@@ -49,7 +52,10 @@ function Apolo() {
       </ApoloDivHeader>
       <DivApoloBox>
         <ApoloDivContent>
-          {Itens.map((e, i) => (
+          {Itens.sort((a, b) => {
+            if (a.preco < b.preco) return 1;
+            return 0;
+          }).map((e, i) => (
           // preciso da imagem
             <ApoloProducts key={ i }>
               <h2>{`${e.name} - level ${e.level}`}</h2>

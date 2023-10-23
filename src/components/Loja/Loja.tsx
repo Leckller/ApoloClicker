@@ -14,7 +14,10 @@ function Loja() {
       <LojaSectionMobile>
         <DivProductsNFiltersMobile>
           <DivProductsMobile>
-            {AdvocaciaProducts.filter((e) => Itens
+            {AdvocaciaProducts.sort((a, b) => {
+              if (a.preco < b.preco) return 1;
+              return 0;
+            }).filter((e) => Itens
               .find((ef) => ef.name === e.name)?.name !== e.name)
               .map((e) => (
                 <DivProductMobile key={ e.id }>
@@ -60,7 +63,10 @@ function Loja() {
       </LojaDivHeader>
       <DivProductsNFilters>
         <DivProducts>
-          {AdvocaciaProducts.filter((e) => Itens
+          {AdvocaciaProducts.sort((a, b) => {
+            if (a.preco < b.preco) return 1;
+            return 0;
+          }).filter((e) => Itens
             .find((ef) => ef.name === e.name)?.name !== e.name)
             .map((e) => (
               <DivProduct key={ e.id }>
