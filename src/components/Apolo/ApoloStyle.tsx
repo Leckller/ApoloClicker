@@ -34,7 +34,7 @@ export const DivApoloBox = styled.div`
 export const ApoloDivContent = styled.div`
   display: flex;
   flex-flow: row wrap;
-  width: 80%;
+  width: 100%;
   height: 100%;
   overflow-y: auto;
 `;
@@ -48,6 +48,7 @@ border: solid black 2px;
 border-radius: 10%;
 margin: 1vh;
 width: 30%;
+flex-grow: 1;
 height: 50%;
 button {
   width: 80%;
