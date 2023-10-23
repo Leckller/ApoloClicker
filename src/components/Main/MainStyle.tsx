@@ -47,5 +47,12 @@ export const MainSMobile = styled.main`
   justify-content: center;
   width: 100vw;
   height: 90vh;
-  border: solid black 1px
+  overflow: hidden;
+  border: solid black 1px;
+`;
+
+export const ImageDede = styled.img`
+  width: 150%;
+  height: 100%;
+  border: solid black 10px
 `;
