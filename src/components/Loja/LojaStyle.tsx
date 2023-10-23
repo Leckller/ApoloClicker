@@ -62,3 +62,45 @@ export const DivProduct = styled.div`
     height: 15%;
   }
 `;
+
+// mobile
+
+export const LojaSectionMobile = styled.section`
+  width: 80vw;
+  height: 80vh;
+  position: absolute;
+  border: solid black 1px;
+  background-color: white;
+`;
+
+export const DivProductsNFiltersMobile = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;  
+`;
+
+export const DivProductsMobile = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+`;
+
+export const DivProductMobile = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  border: solid black 2px;
+  border-radius: 10%;
+  margin: .5vh;
+  width: 90%;
+  height: 50%;
+  button {
+    width: 80%;
+    height: 15%;
+  }
+`;

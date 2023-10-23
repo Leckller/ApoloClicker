@@ -16,4 +16,8 @@ export type GlobalState = {
     Itens: ItensType[],
     DinheiroPassivo: number,
   }
+  LojasReducer: {
+    loja: boolean,
+    apolo: boolean,
+  }
 };

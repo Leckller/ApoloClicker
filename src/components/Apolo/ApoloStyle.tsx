@@ -54,3 +54,45 @@ button {
   height: 15%;
 }
 `;
+
+// mobile
+
+export const ApoloSectionMobile = styled.section`
+  width: 80vw;
+  height: 80vh;
+  position: absolute;
+  border: solid black 1px;
+  background-color: white;
+`;
+
+export const DivApoloBoxMobile = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;  
+`;
+
+export const ApoloDivContentMobile = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+`;
+
+export const ApoloProductsMobile = styled.div`
+display: flex;
+flex-flow: column nowrap;
+justify-content: space-around;
+align-items: center;
+border: solid black 2px;
+border-radius: 10%;
+margin: 1vh;
+width: 90%;
+height: 50%;
+button {
+  width: 80%;
+  height: 15%;
+}
+`;

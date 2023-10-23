@@ -37,3 +37,15 @@ export const DivDedeNSec = styled.div`
     }
   }
 `;
+
+// mobile
+
+export const MainSMobile = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 90vh;
+  border: solid black 1px
+`;
