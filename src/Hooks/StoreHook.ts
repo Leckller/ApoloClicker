@@ -6,6 +6,7 @@ import { autoClick } from '../redux/actions/ClickDedeAction';
 export function useStoreHook() {
   const dispatch = useDispatch();
   const store = useSelector((state:GlobalState) => state);
+  const { LojasReducer: { apolo, loja } } = store;
   useEffect(() => {
     const Dede = setTimeout(() => {
       const { ClickerReducer: { dX, mX } } = store;
@@ -19,5 +20,5 @@ export function useStoreHook() {
     return () => clearTimeout(Dede);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [store.ClickerReducer.DinheiroPassivo]);
-  return { store, dispatch };
+  return { store, dispatch, apolo, loja };
 }
