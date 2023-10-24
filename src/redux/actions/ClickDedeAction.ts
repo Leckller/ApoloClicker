@@ -11,14 +11,7 @@ export const clickDede = (multiplicador: number = 1, Ganho: number = 1) => ({
 
 export const BUY_ITEM = 'BUY_ITEM';
 
-export const buyItem = (item: {
-  name: string,
-  preco: number,
-  tipo: string,
-  level: number,
-  mX: number,
-  dX: number,
-}) => (
+export const buyItem = (item: ItensType) => (
   {
     type: BUY_ITEM,
     payload: {
@@ -48,7 +41,7 @@ export const sellItem = (item: ItensType, value:number, mX: number, dX: number) 
 
 export const AUTO_CLICK = 'AUTO_CLICK';
 
-export const autoClick = (multiplicador: number = 1, Ganho: number = 1) => ({
+export const autoClick = (Ganho: number = 1, multiplicador: number = 1) => ({
   type: AUTO_CLICK,
   payload: {
     x: Number(multiplicador * Ganho),

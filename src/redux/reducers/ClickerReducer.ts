@@ -14,8 +14,12 @@ const InitialState = {
   mX: localStorage.getItem(key) ? local.mX : 0.2,
   dX: localStorage.getItem(key) ? local.dX : 1,
   Sprite: 1,
-  Itens: localStorage.getItem(key) ? local.Itens : [],
   DinheiroPassivo: 0,
+  ProducaoCafe: localStorage.getItem(key) ? local.ProducaoCafe : 5,
+  limiteCafe: localStorage.getItem(key) ? local.limiteCafe : 25,
+  cafeAtual: localStorage.getItem(key) ? local.cafeAtual : 0,
+  consumoCafe: localStorage.getItem(key) ? local.consumoCafe : 5,
+  Itens: localStorage.getItem(key) ? local.Itens : [],
 };
 
 const ClickerReducer = (state = InitialState, action: AnyAction) => {
@@ -29,15 +33,28 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         Sprite: state.Sprite === 1 ? 2 : 1 };
     }
     case AUTO_CLICK: {
+      const { cafeAtual, limiteCafe, ProducaoCafe, consumoCafe } = state;
       if (state.DinheiroPassivo !== action.payload.x) {
         return { ...state,
           DinheiroPassivo: action.payload.x,
+        };
+      }
+      if (cafeAtual <= 0 && consumoCafe > ProducaoCafe) {
+        return {
+          ...state,
+          ...state,
+          DinheiroPassivo: state.DinheiroPassivo + action.payload.x,
+          Dinheiro: state.Dinheiro + state.DinheiroPassivo,
+          cafeAtual,
         };
       }
       return {
         ...state,
         DinheiroPassivo: state.DinheiroPassivo + action.payload.x,
         Dinheiro: state.Dinheiro + state.DinheiroPassivo,
+        cafeAtual: cafeAtual > limiteCafe - consumoCafe
+          ? limiteCafe
+          : cafeAtual + ProducaoCafe - consumoCafe,
       };
     }
     case BUY_ITEM: {
@@ -54,16 +71,14 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
       };
     }
     case LEVEL_UP: {
+      const { mX, level, dX, preco } = action.payload;
       return {
         ...state,
-        mX: state.mX - action.payload.mX * (action.payload.level - 1)
-        + action.payload.mX * action.payload.level,
-        dX: state.dX - action.payload.dX * (action.payload.level - 1)
-        + action.payload.dX * action.payload.level,
-        Dinheiro: state.Dinheiro - (action.payload.preco
-         + (action.payload.preco / 2) * action.payload.level),
+        mX: state.mX - mX * (level - 1) + mX * level,
+        dX: state.dX - dX * (level - 1) + dX * level,
+        Dinheiro: state.Dinheiro - (preco + (preco / 2) * level),
         Itens: [...state.Itens.filter((e:ItensType) => e !== action.payload), {
-          ...action.payload, level: action.payload.level + 1,
+          ...action.payload, level: level + 1,
         }],
       };
     }

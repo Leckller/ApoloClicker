@@ -5,6 +5,9 @@ export type ItensType = {
   level: number,
   mX: number,
   dX: number,
+  energia: number,
+  consumo: number,
+  produz: number,
 };
 
 export type GlobalState = {
@@ -14,8 +17,12 @@ export type GlobalState = {
     Sprite: number,
     mX: number,
     dX: number,
-    Itens: ItensType[],
     DinheiroPassivo: number,
+    ProducaoCafe: number,
+    limiteCafe: number,
+    cafeAtual: number,
+    consumoCafe: number,
+    Itens: ItensType[],
   }
   LojasReducer: {
     loja: boolean,

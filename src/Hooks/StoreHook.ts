@@ -10,7 +10,9 @@ export function useStoreHook() {
   useEffect(() => {
     const Dede = setTimeout(() => {
       const { ClickerReducer: { dX, mX } } = store;
-      dispatch(autoClick(mX, dX));
+      if (store.ClickerReducer.limiteCafe > store.ClickerReducer.consumoCafe) {
+        dispatch(autoClick(dX, mX));
+      } else { dispatch(autoClick(dX, mX / 3)); }
       // mx multiplicador, dX dinheiro multiplicado
     }, 1000);
     const effect = () => {

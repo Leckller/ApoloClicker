@@ -48,7 +48,15 @@ function Header() {
   return (
     <HeaderS>
       <DivBlockHPadrao>
-        <button>Configurações</button>
+        <button
+          onClick={ () => {
+            localStorage.clear();
+            location.reload();
+          } }
+        >
+          Configurações
+
+        </button>
       </DivBlockHPadrao>
       <div>
         <h1>Apolo Clicker Beta 0.2</h1>
