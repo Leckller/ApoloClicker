@@ -7,15 +7,36 @@ import { BtnOptions } from '../StylesGerais';
 
 function Header() {
   const { dispatch } = useStoreHook();
-  const { ClickerReducer: { Dinheiro } } = useSelector((state: GlobalState) => state);
+  const { ClickerReducer: { Dinheiro },
+    LojasReducer: { apolo, loja } } = useSelector((state: GlobalState) => state);
   if (window.innerWidth <= 420) {
     return (
       <HeaderSMobile>
         <h1>Apolo Clicker Beta 0.3</h1>
         <div>
           <section>
-            <BtnOptions onClick={ () => dispatch(setLoja()) }>Loja</BtnOptions>
-            <BtnOptions onClick={ () => dispatch(setApolo()) }>Apolo</BtnOptions>
+            <BtnOptions
+              onClick={ () => {
+                if (apolo) {
+                  dispatch(setApolo());
+                  dispatch(setLoja());
+                } else { dispatch(setLoja()); }
+              } }
+            >
+              Loja
+
+            </BtnOptions>
+            <BtnOptions
+              onClick={ () => {
+                if (loja) {
+                  dispatch(setLoja());
+                  dispatch(setApolo());
+                } else { dispatch(setApolo()); }
+              } }
+            >
+              Apolo
+
+            </BtnOptions>
           </section>
           <h2>
             {`R$ ${Dinheiro.toFixed(2)}`}

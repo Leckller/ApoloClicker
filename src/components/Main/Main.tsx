@@ -26,9 +26,28 @@ function Main() {
       { apolo && <Apolo />}
       <DivDedeNSec>
         <section>
-          <button onClick={ () => dispatch(setLoja()) }>Loja</button>
+          <button
+            onClick={ () => {
+              if (apolo === true) {
+                dispatch(setApolo());
+                dispatch(setLoja());
+              } else { dispatch(setLoja()); }
+            } }
+          >
+            Loja
+          </button>
           <button>Skins</button>
-          <button onClick={ () => dispatch(setApolo()) }>Apolo</button>
+          <button
+            onClick={ () => {
+              if (loja) {
+                dispatch(setLoja());
+                dispatch(setApolo());
+              } else { dispatch(setApolo()); }
+            } }
+          >
+            Apolo
+
+          </button>
         </section>
         <div>
           <button
