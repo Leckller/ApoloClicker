@@ -51,6 +51,7 @@ function Header() {
         <button
           onClick={ () => {
             localStorage.clear();
+            // eslint-disable-next-line no-restricted-globals
             location.reload();
           } }
         >

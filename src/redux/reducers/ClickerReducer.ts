@@ -45,7 +45,7 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
           ...state,
           DinheiroPassivo: state.DinheiroPassivo + action.payload.x,
           Dinheiro: state.Dinheiro + state.DinheiroPassivo,
-          cafeAtual,
+          cafeAtual: 0,
         };
       }
       return {

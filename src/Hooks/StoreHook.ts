@@ -10,9 +10,10 @@ export function useStoreHook() {
   useEffect(() => {
     const Dede = setTimeout(() => {
       const { ClickerReducer: { dX, mX } } = store;
-      if (store.ClickerReducer.limiteCafe > store.ClickerReducer.consumoCafe) {
-        dispatch(autoClick(dX, mX));
-      } else { dispatch(autoClick(dX, mX / 3)); }
+      const { cafeAtual, ProducaoCafe, consumoCafe } = store.ClickerReducer;
+      if (cafeAtual <= 0 && consumoCafe > ProducaoCafe) {
+        dispatch(autoClick(dX, mX / 3));
+      } else { dispatch(autoClick(dX, mX)); }
       // mx multiplicador, dX dinheiro multiplicado
     }, 1000);
     const effect = () => {
