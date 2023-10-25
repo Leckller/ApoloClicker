@@ -1,6 +1,6 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { clickDede } from '../../redux/actions/ClickDedeAction';
-import { ConfigSectionMobile } from './ConfiguracoesStyle';
+import { ConfigButton, ConfigSectionMobile } from './ConfiguracoesStyle';
 
 function Configuracoes() {
   const { dispatch } = useStoreHook();
@@ -19,9 +19,10 @@ function Configuracoes() {
       </button>
       <h2>
         Esse botão Hack é apenas para testes ele não vai ficar disponivel
-        para sempre.
+        para sempre
+        <ConfigButton onClick={ () => dispatch(clickDede(100, 100)) }>.</ConfigButton>
       </h2>
-      <button onClick={ () => dispatch(clickDede(100, 100)) }>Hack</button>
+      <button onClick={ () => alert('Para de ser pilantra') }>Hack</button>
 
     </ConfigSectionMobile>
   );
