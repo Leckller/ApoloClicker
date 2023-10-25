@@ -6,15 +6,17 @@ import Apolo from '../Apolo/Apolo';
 import { setApolo, setLoja } from '../../redux/actions/LojasAction';
 import dedeImg2 from '../../assets/DedePP1.png';
 import dedeImg3 from '../../assets/dedeP2.png';
+import Configuracoes from '../Configuracoes/Configuracoes';
 
 function Main() {
   const { dispatch, store: { ClickerReducer: { dX, mX, Sprite } },
-    apolo, loja } = useStoreHook();
+    apolo, loja, config } = useStoreHook();
   if (window.innerWidth <= 420) {
     return (
       <MainSMobile onClick={ () => dispatch(clickDede(mX * 1.2, dX)) }>
         { loja && <Loja />}
         { apolo && <Apolo />}
+        { config && <Configuracoes />}
         {Sprite === 1 && <ImageDede src={ dedeImg2 } alt="" />}
         {Sprite === 2 && <ImageDede src={ dedeImg3 } alt="" />}
       </MainSMobile>
@@ -24,6 +26,7 @@ function Main() {
     <MainS>
       { loja && <Loja />}
       { apolo && <Apolo />}
+      { config && <Configuracoes />}
       <DivDedeNSec>
         <section>
           <button

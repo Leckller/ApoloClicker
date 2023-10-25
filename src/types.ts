@@ -28,5 +28,6 @@ export type GlobalState = {
   LojasReducer: {
     loja: boolean,
     apolo: boolean,
+    config: boolean,
   }
 };

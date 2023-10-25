@@ -2,14 +2,13 @@ import { useSelector } from 'react-redux';
 import { DivBlockHPadrao, HeaderS, HeaderSMobile } from './HeaderStyle';
 import { GlobalState } from '../../types';
 import { useStoreHook } from '../../Hooks/StoreHook';
-import { setApolo, setLoja } from '../../redux/actions/LojasAction';
+import { setApolo, setConfig, setLoja } from '../../redux/actions/LojasAction';
 import { BtnOptions } from '../StylesGerais';
-import { clickDede } from '../../redux/actions/ClickDedeAction';
 
 function Header() {
   const { dispatch } = useStoreHook();
   const { ClickerReducer: { Dinheiro },
-    LojasReducer: { apolo, loja } } = useSelector((state: GlobalState) => state);
+    LojasReducer: { apolo, loja, config } } = useSelector((state: GlobalState) => state);
   if (window.innerWidth <= 420) {
     return (
       <HeaderSMobile>
@@ -18,7 +17,10 @@ function Header() {
           <section>
             <BtnOptions
               onClick={ () => {
-                if (apolo) {
+                if (config) {
+                  dispatch(setConfig());
+                  dispatch(setLoja());
+                } else if (apolo) {
                   dispatch(setApolo());
                   dispatch(setLoja());
                 } else { dispatch(setLoja()); }
@@ -32,11 +34,26 @@ function Header() {
                 if (loja) {
                   dispatch(setLoja());
                   dispatch(setApolo());
+                } else if (config) {
+                  dispatch(setConfig());
+                  dispatch(setApolo());
                 } else { dispatch(setApolo()); }
               } }
             >
               Apolo
-
+            </BtnOptions>
+            <BtnOptions
+              onClick={ () => {
+                if (loja) {
+                  dispatch(setLoja());
+                  dispatch(setConfig());
+                } else if (apolo) {
+                  dispatch(setApolo());
+                  dispatch(setConfig());
+                } else { dispatch(setConfig()); }
+              } }
+            >
+              Configurações
             </BtnOptions>
           </section>
           <h2>
@@ -59,7 +76,6 @@ function Header() {
           Configurações
 
         </button>
-        <button onClick={ () => dispatch(clickDede(100, 100)) }>Hack</button>
       </DivBlockHPadrao>
       <div>
         <h1>Apolo Clicker Beta 0.2</h1>
