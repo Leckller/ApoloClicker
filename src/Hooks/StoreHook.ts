@@ -8,6 +8,9 @@ export function useStoreHook() {
   const store = useSelector((state:GlobalState) => state);
   const { LojasReducer: { apolo, loja, config, stats } } = store;
   useEffect(() => {
+    const Timer = setTimeout(() => {
+      console.log('oi');
+    }, 1000);
     const Dede = setTimeout(() => {
       const { ClickerReducer: { dX, mX } } = store;
       const { cafeAtual, ProducaoCafe, consumoCafe, limiteCafe } = store.ClickerReducer;
@@ -20,11 +23,10 @@ export function useStoreHook() {
       }
       // mx multiplicador, dX dinheiro multiplicado
     }, 1000);
-    const effect = () => {
-      return Dede;
+    return () => {
+      clearTimeout(Dede);
+      clearTimeout(Timer);
     };
-    effect();
-    return () => clearTimeout(Dede);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [store.ClickerReducer.DinheiroPassivo]);
   return { store, dispatch, apolo, loja, config, stats };

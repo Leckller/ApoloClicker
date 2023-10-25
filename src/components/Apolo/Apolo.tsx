@@ -27,9 +27,15 @@ function Apolo() {
                     e.preco + (e.preco / 2) * e.level}`}
                 </button>
                 <button
-                  onClick={ () => dispatch(sellItem(e, (e.preco * 0.5), e.mX, e.dX)) }
+                  onClick={ () => (
+                    dispatch(sellItem(
+                      e, (
+                        (e.preco * e.level) / 4),
+                      e.mX,
+                      e.dX,
+                    ))) }
                 >
-                  {`Vender por ${e.preco * 0.5}`}
+                  {`Vender por ${(e.preco * e.level) / 4}`}
                 </button>
               </ApoloProductsMobile>
             ))}
