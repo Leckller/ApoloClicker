@@ -10,3 +10,9 @@ export const ConfigSectionMobile = styled.section`
   border: solid black 1px;
   background-color: white;
 `;
+
+export const ConfigButton = styled.button`
+  border: none;
+  padding: 0 5px;
+  background-color: transparent;
+`;
