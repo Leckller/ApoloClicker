@@ -56,9 +56,11 @@ function Header() {
               Configurações
             </BtnOptions>
           </section>
-          <h2>
-            {`R$ ${Dinheiro.toFixed(2)}`}
-          </h2>
+          <section>
+            <h2>
+              {`R$ ${Dinheiro.toFixed(2)}`}
+            </h2>
+          </section>
         </div>
       </HeaderSMobile>
     );
