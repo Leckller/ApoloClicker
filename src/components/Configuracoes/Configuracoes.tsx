@@ -8,9 +8,11 @@ function Configuracoes() {
     <ConfigSectionMobile>
       <button
         onClick={ () => {
-          localStorage.clear();
-          // eslint-disable-next-line no-restricted-globals
-          location.reload();
+          setTimeout(() => {
+            localStorage.clear();
+            // eslint-disable-next-line no-restricted-globals
+            location.reload();
+          }, 200);
         } }
       >
         Apagar Save
