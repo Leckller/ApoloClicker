@@ -15,6 +15,7 @@ const InitialState = {
   mX: localStorage.getItem(key) ? local.mX : 0.2,
   dX: localStorage.getItem(key) ? local.dX : 1,
   energia: localStorage.getItem(key) ? local.energia : 0,
+  internet: localStorage.getItem(key) ? local.internet : 0,
   Sprite: 1,
   DinheiroPassivo: 0,
   ProducaoCafe: localStorage.getItem(key) ? local.ProducaoCafe : 5,
@@ -74,12 +75,14 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         dX: state.dX + item.dX,
         consumoCafe: state.consumoCafe + item.consumo,
         ProducaoCafe: state.ProducaoCafe + item.produz,
-        limiteCafe: state.limiteCafe + item.tamanho * item.level,
+        limiteCafe: state.limiteCafe + item.tamanho,
         energia: state.energia + item.energia,
+        internet: state.internet + item.velocidade,
       };
     }
     case LEVEL_UP: {
-      const { mX, level, dX, preco, tamanho, consumo, produz, energia } = action.payload;
+      const { mX, level, dX, preco, tamanho,
+        consumo, produz, energia, velocidade } = action.payload;
       return {
         ...state,
         mX: state.mX - mX * (level - 1) + mX * level,
@@ -95,10 +98,12 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
           ...action.payload, level: level + 1,
         }],
         energia: state.energia - energia * (level - 1) + energia * level,
+        internet: state.internet - velocidade * (level - 1) + velocidade * level,
       };
     }
     case SELL_ITEM: {
-      const { mX, level, dX, tamanho, consumo, produz, energia } = action.payload.item;
+      const { mX, level, dX, tamanho,
+        consumo, produz, energia, velocidade } = action.payload.item;
       return { ...state,
         Itens: [...state.Itens
           .filter((e: ItensType) => e !== action.payload.item)],
@@ -109,6 +114,7 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         ProducaoCafe: state.ProducaoCafe - (produz * level),
         consumoCafe: state.consumoCafe - (consumo * level),
         energia: state.energia - (energia * level),
+        internet: state.internet - (velocidade * level),
       };
     }
     case FATURA: {

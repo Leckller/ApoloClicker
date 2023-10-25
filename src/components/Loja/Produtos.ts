@@ -13,6 +13,7 @@ export const AdvocaciaProducts = [
     consumo: 0,
     produz: 5,
     tamanho: 0,
+    velocidade: 0,
   },
   {
     name: 'Raul',
@@ -28,6 +29,7 @@ export const AdvocaciaProducts = [
     consumo: 5,
     produz: 0,
     tamanho: 0,
+    velocidade: 0,
   },
   {
     name: 'Jefinho',
@@ -43,6 +45,7 @@ export const AdvocaciaProducts = [
     consumo: 4,
     produz: 0,
     tamanho: 0,
+    velocidade: 0,
   },
   {
     name: 'StarLink Wifi',
@@ -54,10 +57,11 @@ export const AdvocaciaProducts = [
     dX: 0,
     level: 1,
     desc: 'Aumenta o multiplicador de ganhos em 2',
-    energia: 10,
+    energia: 4,
     consumo: 0,
     produz: 0,
     tamanho: 0,
+    velocidade: 10,
   },
   {
     name: 'Claro Wifi',
@@ -73,6 +77,7 @@ export const AdvocaciaProducts = [
     consumo: 0,
     produz: 0,
     tamanho: 0,
+    velocidade: 1,
   },
   {
     name: 'Melhoria no computador',
@@ -88,6 +93,7 @@ export const AdvocaciaProducts = [
     consumo: 0,
     produz: 0,
     tamanho: 0,
+    velocidade: 0,
   },
   {
     name: 'Melhoria no limite de Café',
@@ -103,5 +109,6 @@ export const AdvocaciaProducts = [
     consumo: 0,
     produz: 0,
     tamanho: 3,
+    velocidade: 0,
   },
 ];

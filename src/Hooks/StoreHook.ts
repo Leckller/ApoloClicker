@@ -7,7 +7,8 @@ import { moneyGap, timerAction } from '../redux/actions/TimerAction';
 export function useStoreHook() {
   const dispatch = useDispatch();
   const store = useSelector((state:GlobalState) => state);
-  const { LojasReducer: { apolo, loja, config, stats } } = store;
+  const { LojasReducer: { apolo, loja, config, stats },
+    ClickerReducer: { internet } } = store;
   useEffect(() => {
     const Timer = setTimeout(() => {
       dispatch(timerAction(store.ClickerReducer.Dinheiro));
@@ -27,7 +28,7 @@ export function useStoreHook() {
         dispatch(autoClick(dX, mX));
       }
       // mx multiplicador, dX dinheiro multiplicado
-    }, 1000);
+    }, ((1000 - internet) >= 500 ? 1000 - internet : 500));
     return () => {
       clearTimeout(Dede);
       clearTimeout(Timer);

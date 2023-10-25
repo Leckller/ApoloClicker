@@ -66,7 +66,7 @@ function Header() {
       <DivBlockHPadrao>
         <button
           onClick={ () => {
-            localStorage.clear();
+            localStorage.removeItem('Clicks');
             // eslint-disable-next-line no-restricted-globals
             location.reload();
           } }

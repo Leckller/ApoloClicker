@@ -28,18 +28,7 @@ function Loja() {
                   <h4>{`R$ ${e.preco}`}</h4>
                   <button
                     onClick={ () => {
-                      dispatch(buyItem({
-                        name: e.name,
-                        preco: e.preco,
-                        tipo: e.tipo,
-                        level: e.level,
-                        dX: e.dX,
-                        mX: e.mX,
-                        consumo: e.consumo,
-                        energia: e.energia,
-                        produz: e.produz,
-                        tamanho: e.tamanho,
-                      }));
+                      dispatch(buyItem(e));
                     } }
                     disabled={ (Dinheiro < e.preco) }
                   >
@@ -81,18 +70,7 @@ function Loja() {
                 <h4>{`R$ ${e.preco}`}</h4>
                 <button
                   onClick={ () => {
-                    dispatch(buyItem({
-                      name: e.name,
-                      preco: e.preco,
-                      tipo: e.tipo,
-                      level: e.level,
-                      dX: e.dX,
-                      mX: e.mX,
-                      consumo: e.consumo,
-                      energia: e.energia,
-                      produz: e.produz,
-                      tamanho: e.tamanho,
-                    }));
+                    dispatch(buyItem(e));
                   } }
                   disabled={ (Dinheiro < e.preco) }
                 >
