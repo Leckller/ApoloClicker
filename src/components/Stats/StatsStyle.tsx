@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-// mobile
-
-export const ConfigSectionMobile = styled.section`
+export const StatsSection = styled.section`
   width: 80vw;
   height: 80vh;
   top: 19vh;

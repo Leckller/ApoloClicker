@@ -6,6 +6,7 @@ export type ItensType = {
   mX: number,
   dX: number,
   energia: number,
+  velocidade: number,
   consumo: number,
   produz: number,
   tamanho: number,
@@ -15,9 +16,11 @@ export type GlobalState = {
   ClickerReducer: {
     Clicks: number,
     Dinheiro: number,
-    Sprite: number,
     mX: number,
     dX: number,
+    energia: number,
+    internet: number,
+    Sprite: number,
     DinheiroPassivo: number,
     ProducaoCafe: number,
     limiteCafe: number,
@@ -29,5 +32,14 @@ export type GlobalState = {
     loja: boolean,
     apolo: boolean,
     config: boolean,
+    stats: boolean,
+  }
+  timerReducer: {
+    dias: number,
+    timerEnd: false,
+    seconds: number,
+    minutes: number,
+    inicio: number,
+    historico: [],
   }
 };

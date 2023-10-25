@@ -2,28 +2,22 @@ import { useSelector } from 'react-redux';
 import { DivBlockHPadrao, HeaderS, HeaderSMobile } from './HeaderStyle';
 import { GlobalState } from '../../types';
 import { useStoreHook } from '../../Hooks/StoreHook';
-import { setApolo, setConfig, setLoja } from '../../redux/actions/LojasAction';
+import { setApolo, setConfig, setLoja, setStats } from '../../redux/actions/LojasAction';
 import { BtnOptions } from '../StylesGerais';
 
 function Header() {
   const { dispatch } = useStoreHook();
-  const { ClickerReducer: { Dinheiro },
-    LojasReducer: { apolo, loja, config } } = useSelector((state: GlobalState) => state);
+  const { ClickerReducer: { Dinheiro }, timerReducer,
+  } = useSelector((state: GlobalState) => state);
   if (window.innerWidth <= 420) {
     return (
       <HeaderSMobile>
-        <h1>Apolo Clicker Beta 0.4</h1>
+        <h1>Apolo Clicker Beta 0.5</h1>
         <div>
           <section>
             <BtnOptions
               onClick={ () => {
-                if (config) {
-                  dispatch(setConfig());
-                  dispatch(setLoja());
-                } else if (apolo) {
-                  dispatch(setApolo());
-                  dispatch(setLoja());
-                } else { dispatch(setLoja()); }
+                dispatch(setLoja());
               } }
             >
               Loja
@@ -31,34 +25,38 @@ function Header() {
             </BtnOptions>
             <BtnOptions
               onClick={ () => {
-                if (loja) {
-                  dispatch(setLoja());
-                  dispatch(setApolo());
-                } else if (config) {
-                  dispatch(setConfig());
-                  dispatch(setApolo());
-                } else { dispatch(setApolo()); }
+                dispatch(setApolo());
               } }
             >
               Apolo
             </BtnOptions>
             <BtnOptions
               onClick={ () => {
-                if (loja) {
-                  dispatch(setLoja());
-                  dispatch(setConfig());
-                } else if (apolo) {
-                  dispatch(setApolo());
-                  dispatch(setConfig());
-                } else { dispatch(setConfig()); }
+                dispatch(setConfig());
               } }
             >
               Configurações
             </BtnOptions>
+            <BtnOptions
+              onClick={ () => {
+                dispatch(setStats());
+              } }
+            >
+              stats
+            </BtnOptions>
           </section>
-          <h2>
-            {`R$ ${Dinheiro.toFixed(2)}`}
-          </h2>
+          <section>
+            <h2>
+              {`R$ ${Dinheiro.toFixed(2)}`}
+            </h2>
+            <div>
+              <h2>
+                {`Dia ${timerReducer.dias} - 
+              1${timerReducer.minutes}:${timerReducer.seconds
+              < 10 ? `0${timerReducer.seconds}` : timerReducer.seconds}`}
+              </h2>
+            </div>
+          </section>
         </div>
       </HeaderSMobile>
     );
@@ -68,7 +66,7 @@ function Header() {
       <DivBlockHPadrao>
         <button
           onClick={ () => {
-            localStorage.clear();
+            localStorage.removeItem('Clicks');
             // eslint-disable-next-line no-restricted-globals
             location.reload();
           } }
@@ -78,7 +76,7 @@ function Header() {
         </button>
       </DivBlockHPadrao>
       <div>
-        <h1>Apolo Clicker Beta 0.4</h1>
+        <h1>Apolo Clicker Beta 0.5</h1>
       </div>
       <DivBlockHPadrao>
         <h2>

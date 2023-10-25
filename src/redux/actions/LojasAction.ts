@@ -15,3 +15,9 @@ export const SET_CONFIG = 'SET_CONFIG';
 export const setConfig = () => ({
   type: SET_CONFIG,
 });
+
+export const SET_STATS = 'SET_STATS';
+
+export const setStats = () => ({
+  type: SET_STATS,
+});

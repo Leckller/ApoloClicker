@@ -29,13 +29,11 @@ export const levelUp = (item: ItensType) => ({
 
 export const SELL_ITEM = 'SELL_ITEM';
 
-export const sellItem = (item: ItensType, value:number, mX: number, dX: number) => ({
+export const sellItem = (item: ItensType, value:number) => ({
   type: SELL_ITEM,
   payload: {
     item,
     value,
-    mX,
-    dX,
   },
 });
 
@@ -46,4 +44,10 @@ export const autoClick = (Ganho: number = 1, multiplicador: number = 1) => ({
   payload: {
     x: Number(multiplicador * Ganho),
   },
+});
+
+export const FATURA = 'FATURA';
+
+export const fatura = () => ({
+  type: FATURA,
 });

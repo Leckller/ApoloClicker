@@ -9,6 +9,9 @@ function App() {
       padding: 0%;
       box-sizing: border-box;
     }
+    body{
+      background-color: #323c39;
+    }
     button {
       cursor: pointer;
     }
