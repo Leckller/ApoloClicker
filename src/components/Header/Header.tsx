@@ -4,6 +4,7 @@ import { GlobalState } from '../../types';
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { setApolo, setLoja } from '../../redux/actions/LojasAction';
 import { BtnOptions } from '../StylesGerais';
+import { clickDede } from '../../redux/actions/ClickDedeAction';
 
 function Header() {
   const { dispatch } = useStoreHook();
@@ -58,6 +59,7 @@ function Header() {
           Configurações
 
         </button>
+        <button onClick={ () => dispatch(clickDede(100, 100)) }>Hack</button>
       </DivBlockHPadrao>
       <div>
         <h1>Apolo Clicker Beta 0.2</h1>

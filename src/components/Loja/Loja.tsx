@@ -38,6 +38,7 @@ function Loja() {
                         consumo: e.consumo,
                         energia: e.energia,
                         produz: e.produz,
+                        tamanho: e.tamanho,
                       }));
                     } }
                     disabled={ (Dinheiro < e.preco) }
@@ -90,6 +91,7 @@ function Loja() {
                       consumo: e.consumo,
                       energia: e.energia,
                       produz: e.produz,
+                      tamanho: e.tamanho,
                     }));
                   } }
                   disabled={ (Dinheiro < e.preco) }

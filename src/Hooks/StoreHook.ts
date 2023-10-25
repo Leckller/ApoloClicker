@@ -10,10 +10,14 @@ export function useStoreHook() {
   useEffect(() => {
     const Dede = setTimeout(() => {
       const { ClickerReducer: { dX, mX } } = store;
-      const { cafeAtual, ProducaoCafe, consumoCafe } = store.ClickerReducer;
-      if (cafeAtual <= 0 && consumoCafe > ProducaoCafe) {
-        dispatch(autoClick(dX, mX / 3));
-      } else { dispatch(autoClick(dX, mX)); }
+      const { cafeAtual, ProducaoCafe, consumoCafe, limiteCafe } = store.ClickerReducer;
+      if ((cafeAtual <= 0 && consumoCafe > ProducaoCafe) || limiteCafe < consumoCafe) {
+        dispatch(autoClick(dX / 2, mX / 2));
+        console.log('se fudeu');
+      } else {
+        dispatch(autoClick(dX, mX));
+        console.log('bem dmais');
+      }
       // mx multiplicador, dX dinheiro multiplicado
     }, 1000);
     const effect = () => {

@@ -22,6 +22,7 @@ const InitialState = {
   Itens: localStorage.getItem(key) ? local.Itens : [],
 };
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const ClickerReducer = (state = InitialState, action: AnyAction) => {
   switch (action.type) {
     case CLICK_DEDE: {
@@ -58,27 +59,36 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
       };
     }
     case BUY_ITEM: {
+      const { item } = action.payload;
       if (state.Itens.some((e: ItensType) => e.name === action.payload.item.name)) {
         alert('Você já possui este item!');
         return { ...state };
       }
       return {
         ...state,
-        Itens: [...state.Itens, action.payload.item],
-        Dinheiro: state.Dinheiro - action.payload.item.preco,
-        mX: state.mX + action.payload.item.mX,
-        dX: state.dX + action.payload.item.dX,
+        Itens: [...state.Itens, item],
+        Dinheiro: state.Dinheiro - item.preco,
+        mX: state.mX + item.mX,
+        dX: state.dX + item.dX,
+        consumoCafe: state.consumoCafe + item.consumo,
+        ProducaoCafe: state.ProducaoCafe + item.produz,
+        limiteCafe: state.limiteCafe + item.tamanho * item.level,
       };
     }
     case LEVEL_UP: {
-      const { mX, level, dX, preco } = action.payload;
+      const { mX, level, dX, preco, tamanho, consumo, produz } = action.payload;
       return {
         ...state,
         mX: state.mX - mX * (level - 1) + mX * level,
         dX: state.dX - dX * (level - 1) + dX * level,
+        limiteCafe: state.limiteCafe + tamanho * level,
+        consumoCafe: state.consumoCafe + consumo * level - (consumo === 0 ? 0
+          : consumo * (level - 1)),
+        ProducaoCafe: state.ProducaoCafe + produz * level - (produz === 0 ? 0
+          : produz * (level - 1)),
         Dinheiro: state.Dinheiro - (preco + (preco / 2) * level),
         Itens: [...state.Itens.filter((e:ItensType) => e !== action.payload), {
-          ...action.payload, level: level + 1,
+          ...action.payload, level: level + 1, tamanho: level * tamanho,
         }],
       };
     }

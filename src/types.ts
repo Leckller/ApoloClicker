@@ -8,6 +8,7 @@ export type ItensType = {
   energia: number,
   consumo: number,
   produz: number,
+  tamanho: number,
 };
 
 export type GlobalState = {
