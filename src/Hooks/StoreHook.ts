@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { GlobalState } from '../types';
-import { autoClick } from '../redux/actions/ClickDedeAction';
+import { autoClick, fatura } from '../redux/actions/ClickDedeAction';
 import { moneyGap, timerAction } from '../redux/actions/TimerAction';
 
 export function useStoreHook() {
@@ -11,7 +11,10 @@ export function useStoreHook() {
   useEffect(() => {
     const Timer = setTimeout(() => {
       dispatch(timerAction(store.ClickerReducer.Dinheiro));
-      if (store.timerReducer.timerEnd) dispatch(moneyGap(store.ClickerReducer.Dinheiro));
+      if (store.timerReducer.timerEnd) {
+        dispatch(moneyGap(store.ClickerReducer.Dinheiro));
+        dispatch(fatura());
+      }
     }, 1000);
     const Dede = setTimeout(() => {
       const { ClickerReducer: { dX, mX } } = store;
@@ -19,6 +22,7 @@ export function useStoreHook() {
       if ((cafeAtual <= 0 && consumoCafe > ProducaoCafe) || limiteCafe < consumoCafe) {
         dispatch(autoClick(dX / 2, mX / 2));
         console.log('Tem gente cansada...');
+        // o historico ta sendo afetado antes disso mas acho q é melhor assim
       } else {
         dispatch(autoClick(dX, mX));
       }

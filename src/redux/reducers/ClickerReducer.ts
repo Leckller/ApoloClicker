@@ -1,7 +1,8 @@
+/* eslint-disable complexity */
 /* eslint-disable react-func/max-lines-per-function */
 /* eslint-disable no-alert */
 import { AnyAction } from 'redux';
-import { AUTO_CLICK, BUY_ITEM, CLICK_DEDE, LEVEL_UP,
+import { AUTO_CLICK, BUY_ITEM, CLICK_DEDE, FATURA, LEVEL_UP,
   SELL_ITEM } from '../actions/ClickDedeAction';
 import { ItensType } from '../../types';
 
@@ -13,6 +14,7 @@ const InitialState = {
   Dinheiro: localStorage.getItem(key) ? local.Dinheiro : 0,
   mX: localStorage.getItem(key) ? local.mX : 0.2,
   dX: localStorage.getItem(key) ? local.dX : 1,
+  energia: localStorage.getItem(key) ? local.energia : 0,
   Sprite: 1,
   DinheiroPassivo: 0,
   ProducaoCafe: localStorage.getItem(key) ? local.ProducaoCafe : 5,
@@ -73,10 +75,11 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         consumoCafe: state.consumoCafe + item.consumo,
         ProducaoCafe: state.ProducaoCafe + item.produz,
         limiteCafe: state.limiteCafe + item.tamanho * item.level,
+        energia: state.energia + item.energia,
       };
     }
     case LEVEL_UP: {
-      const { mX, level, dX, preco, tamanho, consumo, produz } = action.payload;
+      const { mX, level, dX, preco, tamanho, consumo, produz, energia } = action.payload;
       return {
         ...state,
         mX: state.mX - mX * (level - 1) + mX * level,
@@ -91,10 +94,11 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         Itens: [...state.Itens.filter((e:ItensType) => e !== action.payload), {
           ...action.payload, level: level + 1,
         }],
+        energia: state.energia - energia * (level - 1) + energia * level,
       };
     }
     case SELL_ITEM: {
-      const { mX, level, dX, tamanho, consumo, produz } = action.payload.item;
+      const { mX, level, dX, tamanho, consumo, produz, energia } = action.payload.item;
       return { ...state,
         Itens: [...state.Itens
           .filter((e: ItensType) => e !== action.payload.item)],
@@ -104,6 +108,17 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         limiteCafe: state.limiteCafe - (tamanho * level),
         ProducaoCafe: state.ProducaoCafe - (produz * level),
         consumoCafe: state.consumoCafe - (consumo * level),
+        energia: state.energia - (energia * level),
+      };
+    }
+    case FATURA: {
+      if (state.Dinheiro < state.energia) {
+        console.log('vish faliu kkk');
+        return { ...state };
+      }
+      return {
+        ...state,
+        Dinheiro: state.Dinheiro - state.energia,
       };
     }
     default: {
