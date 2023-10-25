@@ -12,7 +12,7 @@ function Header() {
   if (window.innerWidth <= 420) {
     return (
       <HeaderSMobile>
-        <h1>Apolo Clicker Beta 0.3</h1>
+        <h1>Apolo Clicker Beta 0.4</h1>
         <div>
           <section>
             <BtnOptions
@@ -78,7 +78,7 @@ function Header() {
         </button>
       </DivBlockHPadrao>
       <div>
-        <h1>Apolo Clicker Beta 0.2</h1>
+        <h1>Apolo Clicker Beta 0.4</h1>
       </div>
       <DivBlockHPadrao>
         <h2>
