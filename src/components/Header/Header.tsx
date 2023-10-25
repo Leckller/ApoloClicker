@@ -2,13 +2,12 @@ import { useSelector } from 'react-redux';
 import { DivBlockHPadrao, HeaderS, HeaderSMobile } from './HeaderStyle';
 import { GlobalState } from '../../types';
 import { useStoreHook } from '../../Hooks/StoreHook';
-import { setApolo, setConfig, setLoja } from '../../redux/actions/LojasAction';
+import { setApolo, setConfig, setLoja, setStats } from '../../redux/actions/LojasAction';
 import { BtnOptions } from '../StylesGerais';
 
 function Header() {
   const { dispatch } = useStoreHook();
-  const { ClickerReducer: { Dinheiro },
-    LojasReducer: { apolo, loja, config } } = useSelector((state: GlobalState) => state);
+  const { ClickerReducer: { Dinheiro } } = useSelector((state: GlobalState) => state);
   if (window.innerWidth <= 420) {
     return (
       <HeaderSMobile>
@@ -17,13 +16,7 @@ function Header() {
           <section>
             <BtnOptions
               onClick={ () => {
-                if (config) {
-                  dispatch(setConfig());
-                  dispatch(setLoja());
-                } else if (apolo) {
-                  dispatch(setApolo());
-                  dispatch(setLoja());
-                } else { dispatch(setLoja()); }
+                dispatch(setLoja());
               } }
             >
               Loja
@@ -31,29 +24,24 @@ function Header() {
             </BtnOptions>
             <BtnOptions
               onClick={ () => {
-                if (loja) {
-                  dispatch(setLoja());
-                  dispatch(setApolo());
-                } else if (config) {
-                  dispatch(setConfig());
-                  dispatch(setApolo());
-                } else { dispatch(setApolo()); }
+                dispatch(setApolo());
               } }
             >
               Apolo
             </BtnOptions>
             <BtnOptions
               onClick={ () => {
-                if (loja) {
-                  dispatch(setLoja());
-                  dispatch(setConfig());
-                } else if (apolo) {
-                  dispatch(setApolo());
-                  dispatch(setConfig());
-                } else { dispatch(setConfig()); }
+                dispatch(setConfig());
               } }
             >
               Configurações
+            </BtnOptions>
+            <BtnOptions
+              onClick={ () => {
+                dispatch(setStats());
+              } }
+            >
+              stats
             </BtnOptions>
           </section>
           <section>

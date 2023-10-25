@@ -99,9 +99,9 @@ export const AdvocaciaProducts = [
     dX: 0,
     level: 1,
     desc: 'Aumenta o limite de café',
-    energia: 20,
+    energia: 0,
     consumo: 0,
     produz: 0,
-    tamanho: 5,
+    tamanho: 3,
   },
 ];

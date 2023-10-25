@@ -29,5 +29,6 @@ export type GlobalState = {
     loja: boolean,
     apolo: boolean,
     config: boolean,
+    stats: boolean,
   }
 };

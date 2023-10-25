@@ -81,24 +81,29 @@ const ClickerReducer = (state = InitialState, action: AnyAction) => {
         ...state,
         mX: state.mX - mX * (level - 1) + mX * level,
         dX: state.dX - dX * (level - 1) + dX * level,
-        limiteCafe: state.limiteCafe + tamanho * level,
+        limiteCafe: state.limiteCafe + tamanho * level - (tamanho === 0 ? 0
+          : tamanho * (level - 1)),
         consumoCafe: state.consumoCafe + consumo * level - (consumo === 0 ? 0
           : consumo * (level - 1)),
         ProducaoCafe: state.ProducaoCafe + produz * level - (produz === 0 ? 0
           : produz * (level - 1)),
         Dinheiro: state.Dinheiro - (preco + (preco / 2) * level),
         Itens: [...state.Itens.filter((e:ItensType) => e !== action.payload), {
-          ...action.payload, level: level + 1, tamanho: level * tamanho,
+          ...action.payload, level: level + 1,
         }],
       };
     }
     case SELL_ITEM: {
+      const { mX, level, dX, tamanho, consumo, produz } = action.payload.item;
       return { ...state,
         Itens: [...state.Itens
           .filter((e: ItensType) => e !== action.payload.item)],
         Dinheiro: state.Dinheiro + action.payload.value,
-        dX: state.dX - (action.payload.item.dX * action.payload.item.level),
-        mX: state.mX - (action.payload.item.mX * action.payload.item.level),
+        dX: state.dX - (dX * level),
+        mX: state.mX - (mX * level),
+        limiteCafe: state.limiteCafe - (tamanho * level),
+        ProducaoCafe: state.ProducaoCafe - (produz * level),
+        consumoCafe: state.consumoCafe - (consumo * level),
       };
     }
     default: {
