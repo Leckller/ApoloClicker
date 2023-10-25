@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { GlobalState } from '../types';
 import { autoClick } from '../redux/actions/ClickDedeAction';
+import { moneyGap, timerAction } from '../redux/actions/TimerAction';
 
 export function useStoreHook() {
   const dispatch = useDispatch();
@@ -9,17 +10,17 @@ export function useStoreHook() {
   const { LojasReducer: { apolo, loja, config, stats } } = store;
   useEffect(() => {
     const Timer = setTimeout(() => {
-      console.log('oi');
+      dispatch(timerAction(store.ClickerReducer.Dinheiro));
+      if (store.timerReducer.timerEnd) dispatch(moneyGap(store.ClickerReducer.Dinheiro));
     }, 1000);
     const Dede = setTimeout(() => {
       const { ClickerReducer: { dX, mX } } = store;
       const { cafeAtual, ProducaoCafe, consumoCafe, limiteCafe } = store.ClickerReducer;
       if ((cafeAtual <= 0 && consumoCafe > ProducaoCafe) || limiteCafe < consumoCafe) {
         dispatch(autoClick(dX / 2, mX / 2));
-        console.log('se fudeu');
+        console.log('Tem gente cansada...');
       } else {
         dispatch(autoClick(dX, mX));
-        console.log('bem dmais');
       }
       // mx multiplicador, dX dinheiro multiplicado
     }, 1000);

@@ -31,4 +31,12 @@ export type GlobalState = {
     config: boolean,
     stats: boolean,
   }
+  timerReducer: {
+    dias: number,
+    timerEnd: false,
+    seconds: number,
+    minutes: number,
+    inicio: number,
+    historico: [],
+  }
 };
