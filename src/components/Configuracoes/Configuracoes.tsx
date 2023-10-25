@@ -21,7 +21,8 @@ function Configuracoes() {
         Esse botão Hack é apenas para testes ele não vai ficar disponivel
         para sempre.
       </h2>
-      <button onClick={ () => dispatch(clickDede(100, 100)) }>Hack</button>
+      {/* <button onClick={ () => dispatch(clickDede(100, 100)) }>Hack</button> */}
+      <button onClick={ () => alert('Para de ser pilantra') }>Hack</button>
 
     </ConfigSectionMobile>
   );
