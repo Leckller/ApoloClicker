@@ -52,8 +52,9 @@ export const MainSMobile = styled.main`
 `;
 
 export const ImageDede = styled.img`
-  width: 150%;
-  height: 100%;
+  width: 900px;
+  transform: translate(50px);
+  height: 980px;
   border: solid black 10px;
   z-index: -1000;
 `;

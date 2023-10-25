@@ -35,6 +35,10 @@ function Loja() {
                         level: e.level,
                         dX: e.dX,
                         mX: e.mX,
+                        consumo: e.consumo,
+                        energia: e.energia,
+                        produz: e.produz,
+                        tamanho: e.tamanho,
                       }));
                     } }
                     disabled={ (Dinheiro < e.preco) }
@@ -84,6 +88,10 @@ function Loja() {
                       level: e.level,
                       dX: e.dX,
                       mX: e.mX,
+                      consumo: e.consumo,
+                      energia: e.energia,
+                      produz: e.produz,
+                      tamanho: e.tamanho,
                     }));
                   } }
                   disabled={ (Dinheiro < e.preco) }

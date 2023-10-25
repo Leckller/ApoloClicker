@@ -27,7 +27,7 @@ export const HeaderSMobile = styled.header`
     width: 100%;
     section{
       display: flex;
-      flex-direction: row;
+      flex-flow: row wrap;
       align-items: center;
       justify-content: space-around;
       padding: 1vh;

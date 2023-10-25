@@ -1,9 +1,10 @@
 import { AnyAction } from 'redux';
-import { SET_APOLO, SET_LOJA } from '../actions/LojasAction';
+import { SET_APOLO, SET_CONFIG, SET_LOJA } from '../actions/LojasAction';
 
 const initialState = {
   loja: false,
   apolo: false,
+  config: false,
 };
 
 const LojasReducer = (state = initialState, action: AnyAction) => {
@@ -18,6 +19,12 @@ const LojasReducer = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         apolo: (!state.apolo),
+      };
+    }
+    case SET_CONFIG: {
+      return {
+        ...state,
+        config: (!state.config),
       };
     }
     default: {
