@@ -20,6 +20,9 @@ export const HeaderSMobile = styled.header`
   display: flex;
   flex-direction: column;
   width: 100vw;
+  background-color: transparent;
+  position: absolute;
+  color: white;
   div{
     display: flex;
     flex-direction: column;

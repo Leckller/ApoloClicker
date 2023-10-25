@@ -4,6 +4,7 @@ export const ApoloSection = styled.section`
   width: 80vw;
   height: 80vh;
   position: absolute;
+  top: 19vh;
   border: solid black 1px;
   background-color: white;
 `;
@@ -61,6 +62,7 @@ button {
 export const ApoloSectionMobile = styled.section`
   width: 80vw;
   height: 80vh;
+  top: 19vh;
   position: absolute;
   border: solid black 1px;
   background-color: white;

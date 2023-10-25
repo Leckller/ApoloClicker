@@ -26,14 +26,14 @@ const InitialState = {
 const ClickerReducer = (state = InitialState, action: AnyAction) => {
   switch (action.type) {
     case CLICK_DEDE: {
-      const actState = { ...state };
-      localStorage.setItem(key, JSON.stringify(actState));
       return { ...state,
         Clicks: state.Clicks + 1,
         Dinheiro: action.payload.x + state.Dinheiro,
         Sprite: state.Sprite === 1 ? 2 : 1 };
     }
     case AUTO_CLICK: {
+      const actState = { ...state };
+      localStorage.setItem(key, JSON.stringify(actState));
       const { cafeAtual, limiteCafe, ProducaoCafe, consumoCafe } = state;
       if (state.DinheiroPassivo !== action.payload.x) {
         return { ...state,

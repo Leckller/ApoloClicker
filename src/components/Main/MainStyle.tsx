@@ -53,6 +53,7 @@ export const MainSMobile = styled.main`
 
 export const ImageDede = styled.img`
   width: 900px;
+  padding-top: 10vh;
   transform: translate(50px);
   height: 980px;
   border: solid black 10px;

@@ -1,18 +1,23 @@
 import { AnyAction } from 'redux';
 import { MONEY_GAP, TIMER_ACTION } from '../actions/TimerAction';
 
+const key = 'Timer';
+const local = JSON.parse(localStorage.getItem(key) as string);
+
 const InitialState = {
-  dias: 0,
+  dias: localStorage.getItem(key) ? local.dias : 0,
   timerEnd: false,
   seconds: 0,
   minutes: 0,
   inicio: 0,
-  historico: [],
+  historico: localStorage.getItem(key) ? local.historico : [],
 };
 
 const timerReducer = (state = InitialState, action: AnyAction) => {
   switch (action.type) {
     case TIMER_ACTION: {
+      const actState = { ...state };
+      localStorage.setItem(key, JSON.stringify(actState));
       if (state.minutes === 8) {
         return {
           ...state,

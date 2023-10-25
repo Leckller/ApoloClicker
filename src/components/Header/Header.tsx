@@ -7,7 +7,8 @@ import { BtnOptions } from '../StylesGerais';
 
 function Header() {
   const { dispatch } = useStoreHook();
-  const { ClickerReducer: { Dinheiro } } = useSelector((state: GlobalState) => state);
+  const { ClickerReducer: { Dinheiro }, timerReducer,
+  } = useSelector((state: GlobalState) => state);
   if (window.innerWidth <= 420) {
     return (
       <HeaderSMobile>
@@ -48,6 +49,13 @@ function Header() {
             <h2>
               {`R$ ${Dinheiro.toFixed(2)}`}
             </h2>
+            <div>
+              <h2>
+                {`Dia ${timerReducer.dias} - 
+              1${timerReducer.minutes}:${timerReducer.seconds
+              < 10 ? `0${timerReducer.seconds}` : timerReducer.seconds}`}
+              </h2>
+            </div>
           </section>
         </div>
       </HeaderSMobile>

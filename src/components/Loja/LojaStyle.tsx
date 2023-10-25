@@ -70,6 +70,7 @@ export const LojaSectionMobile = styled.section`
   width: 80vw;
   height: 80vh;
   position: absolute;
+  top: 19vh;
   border: solid black 1px;
   background-color: white;
 `;
