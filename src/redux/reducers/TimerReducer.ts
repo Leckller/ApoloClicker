@@ -44,7 +44,8 @@ const timerReducer = (state = InitialState, action: AnyAction) => {
     case MONEY_GAP: {
       return {
         ...state,
-        historico: [...state.historico, action.payload - state.inicio]
+        historico: [...state.historico, Number((action.payload - state.inicio)
+          .toFixed(2))]
           .filter((e:number) => e !== 0),
       };
     }

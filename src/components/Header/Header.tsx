@@ -2,8 +2,6 @@ import { useSelector } from 'react-redux';
 import { DivBlockHPadrao, HeaderS, HeaderSMobile } from './HeaderStyle';
 import { GlobalState } from '../../types';
 import { useStoreHook } from '../../Hooks/StoreHook';
-import { setApolo, setConfig, setLoja, setStats } from '../../redux/actions/LojasAction';
-import { BtnOptions } from '../StylesGerais';
 
 function Header() {
   const { dispatch } = useStoreHook();
@@ -12,39 +10,8 @@ function Header() {
   if (window.innerWidth <= 420) {
     return (
       <HeaderSMobile>
-        <h1>Apolo Clicker Beta 0.5</h1>
+        <button>=</button>
         <div>
-          <section>
-            <BtnOptions
-              onClick={ () => {
-                dispatch(setLoja());
-              } }
-            >
-              Loja
-
-            </BtnOptions>
-            <BtnOptions
-              onClick={ () => {
-                dispatch(setApolo());
-              } }
-            >
-              Apolo
-            </BtnOptions>
-            <BtnOptions
-              onClick={ () => {
-                dispatch(setConfig());
-              } }
-            >
-              Configurações
-            </BtnOptions>
-            <BtnOptions
-              onClick={ () => {
-                dispatch(setStats());
-              } }
-            >
-              stats
-            </BtnOptions>
-          </section>
           <section>
             <h2>
               {`R$ ${Dinheiro.toFixed(2)}`}

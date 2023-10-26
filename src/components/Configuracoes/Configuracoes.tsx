@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { clickDede } from '../../redux/actions/ClickDedeAction';
 import { ConfigButton, ConfigSectionMobile } from './ConfiguracoesStyle';

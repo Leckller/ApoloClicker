@@ -14,7 +14,7 @@ const InitialState = {
   Dinheiro: localStorage.getItem(key) ? local.Dinheiro : 0,
   mX: localStorage.getItem(key) ? local.mX : 0.2,
   dX: localStorage.getItem(key) ? local.dX : 1,
-  energia: localStorage.getItem(key) ? local.energia : 0,
+  energia: localStorage.getItem(key) ? local.energia : 25,
   internet: localStorage.getItem(key) ? local.internet : 0,
   Sprite: 1,
   DinheiroPassivo: 0,

@@ -30,8 +30,8 @@ export function useStoreHook() {
       // mx multiplicador, dX dinheiro multiplicado
     }, ((1000 - internet) >= 500 ? 1000 - internet : 500));
     return () => {
-      clearTimeout(Dede);
       clearTimeout(Timer);
+      clearTimeout(Dede);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [store.ClickerReducer.DinheiroPassivo]);
