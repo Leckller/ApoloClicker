@@ -1,17 +1,18 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { buyItem } from '../../redux/actions/ClickDedeAction';
 import { setLoja } from '../../redux/actions/LojasAction';
+import { ArticleMenusMobile } from '../Menu/MenuStyle';
 import { DivProduct, DivProductMobile,
   DivProducts, DivProductsMobile, DivProductsNFilters,
   DivProductsNFiltersMobile,
-  LojaDivHeader, LojaSection, LojaSectionMobile } from './LojaStyle';
+  LojaDivHeader, LojaSection } from './LojaStyle';
 import { AdvocaciaProducts } from './Produtos';
 
 function Loja() {
   const { store: { ClickerReducer: { Dinheiro, Itens } }, dispatch } = useStoreHook();
   if (window.innerWidth <= 420) {
     return (
-      <LojaSectionMobile>
+      <ArticleMenusMobile>
         <DivProductsNFiltersMobile>
           <DivProductsMobile>
             {AdvocaciaProducts.sort((a, b) => {
@@ -38,7 +39,7 @@ function Loja() {
               ))}
           </DivProductsMobile>
         </DivProductsNFiltersMobile>
-      </LojaSectionMobile>
+      </ArticleMenusMobile>
     );
   }
   return (

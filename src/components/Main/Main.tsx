@@ -7,10 +7,11 @@ import dedeImg2 from '../../assets/DedePP1.png';
 import dedeImg3 from '../../assets/dedeP2.png';
 import Configuracoes from '../Configuracoes/Configuracoes';
 import Stats from '../Stats/Stats';
+import Menu from '../Menu/Menu';
 
 function Main() {
   const { dispatch, store: { ClickerReducer: { dX, mX, Sprite } },
-    apolo, loja, config, stats } = useStoreHook();
+    apolo, loja, config, stats, menu } = useStoreHook();
   if (window.innerWidth <= 420) {
     return (
       <MainSMobile onClick={ () => dispatch(clickDede(mX * 1.2, dX)) }>
@@ -18,6 +19,7 @@ function Main() {
         { apolo && <Apolo />}
         { config && <Configuracoes />}
         { stats && <Stats />}
+        { menu && <Menu />}
         {Sprite === 1 && <ImageDede src={ dedeImg2 } alt="" />}
         {Sprite === 2 && <ImageDede src={ dedeImg3 } alt="" />}
       </MainSMobile>

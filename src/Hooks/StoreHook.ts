@@ -7,7 +7,7 @@ import { moneyGap, timerAction } from '../redux/actions/TimerAction';
 export function useStoreHook() {
   const dispatch = useDispatch();
   const store = useSelector((state:GlobalState) => state);
-  const { LojasReducer: { apolo, loja, config, stats },
+  const { LojasReducer: { apolo, loja, config, stats, menu },
     ClickerReducer: { internet } } = store;
   useEffect(() => {
     const Timer = setTimeout(() => {
@@ -35,5 +35,5 @@ export function useStoreHook() {
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [store.ClickerReducer.DinheiroPassivo]);
-  return { store, dispatch, apolo, loja, config, stats };
+  return { store, dispatch, apolo, loja, config, stats, menu };
 }

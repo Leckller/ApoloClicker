@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { DivBlockHPadrao, HeaderS, HeaderSMobile } from './HeaderStyle';
 import { GlobalState } from '../../types';
 import { useStoreHook } from '../../Hooks/StoreHook';
+import { setMenu } from '../../redux/actions/LojasAction';
 
 function Header() {
   const { dispatch } = useStoreHook();
@@ -10,7 +11,7 @@ function Header() {
   if (window.innerWidth <= 420) {
     return (
       <HeaderSMobile>
-        <button>=</button>
+        <button onClick={ () => dispatch(setMenu()) }>=</button>
         <div>
           <section>
             <h2>

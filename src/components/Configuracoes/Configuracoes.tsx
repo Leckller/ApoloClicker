@@ -1,12 +1,13 @@
 /* eslint-disable no-alert */
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { clickDede } from '../../redux/actions/ClickDedeAction';
-import { ConfigButton, ConfigSectionMobile } from './ConfiguracoesStyle';
+import { ArticleMenusMobile } from '../Menu/MenuStyle';
+import { ConfigButton } from './ConfiguracoesStyle';
 
 function Configuracoes() {
   const { dispatch } = useStoreHook();
   return (
-    <ConfigSectionMobile>
+    <ArticleMenusMobile>
       <button
         onClick={ () => {
           setTimeout(() => {
@@ -25,7 +26,7 @@ function Configuracoes() {
       </h2>
       <button onClick={ () => alert('Para de ser pilantra') }>Hack</button>
 
-    </ConfigSectionMobile>
+    </ArticleMenusMobile>
   );
 }
 

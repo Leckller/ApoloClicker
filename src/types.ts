@@ -33,6 +33,7 @@ export type GlobalState = {
     apolo: boolean,
     config: boolean,
     stats: boolean,
+    menu: boolean,
   }
   timerReducer: {
     dias: number,

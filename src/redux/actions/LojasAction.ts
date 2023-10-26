@@ -21,3 +21,9 @@ export const SET_STATS = 'SET_STATS';
 export const setStats = () => ({
   type: SET_STATS,
 });
+
+export const SET_MENU = 'SET_MENU';
+
+export const setMenu = () => ({
+  type: SET_MENU,
+});

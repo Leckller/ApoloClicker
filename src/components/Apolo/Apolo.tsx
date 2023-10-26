@@ -1,15 +1,16 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { levelUp, sellItem } from '../../redux/actions/ClickDedeAction';
 import { setApolo } from '../../redux/actions/LojasAction';
+import { ArticleMenusMobile } from '../Menu/MenuStyle';
 import { ApoloDivContent, ApoloDivContentMobile, ApoloDivHeader,
-  ApoloProducts, ApoloProductsMobile, ApoloSection, ApoloSectionMobile, DivApoloBox,
+  ApoloProducts, ApoloProductsMobile, ApoloSection, DivApoloBox,
   DivApoloBoxMobile } from './ApoloStyle';
 
 function Apolo() {
   const { store: { ClickerReducer: { Itens, Dinheiro } }, dispatch } = useStoreHook();
   if (window.innerWidth <= 420) {
     return (
-      <ApoloSectionMobile>
+      <ArticleMenusMobile>
         <DivApoloBoxMobile>
           <ApoloDivContentMobile>
             {Itens.sort((a, b) => {
@@ -39,7 +40,7 @@ function Apolo() {
             ))}
           </ApoloDivContentMobile>
         </DivApoloBoxMobile>
-      </ApoloSectionMobile>
+      </ArticleMenusMobile>
     );
   }
   return (
