@@ -8,7 +8,7 @@ function Loja() {
 
   return (
     <article
-      className="bg-white w-full justify-center pt-1 absolute h-1/2 overflow-auto
+      className="bg-white w-full justify-center pt-1 h-full overflow-auto
     flex flex-row flex-wrap gap-1"
     >
       <div className="w-full pr-1 pl-1 flex flex-row justify-around">
@@ -23,7 +23,7 @@ function Loja() {
         .map((e) => (
           <article
             key={ e.id }
-            className="w-[200px] gap-2 h-1/2 flex flex-col text-center mb-5 border"
+            className="w-[200px] gap-2 h-1/3 flex flex-col text-center mb-5 border"
           >
 
             <h3>{e.name}</h3>

@@ -28,33 +28,19 @@ function Main() {
     }, 1000);
     return clearTimeout(Timer);
   }, [DinheiroPassivo]);
-  if (window.innerWidth <= 420) {
-    return (
-      <main onClick={ () => dispatch(clickDede(mX * 1.2, dX)) }>
-        { loja && <Loja />}
-        { apolo && <Apolo />}
-        { config && <Configuracoes />}
-        { stats && <Stats />}
-        { menu && <Menu />}
-        {Sprite === 1 && <img src={ dedeImg2 } alt="" />}
-        {Sprite === 2 && <img src={ dedeImg3 } alt="" />}
-      </main>
-    );
-  }
+
   return (
-    <main>
+    <main
+      className="h-full"
+      onClick={ () => dispatch(clickDede(mX * 1.2, dX)) }
+    >
+      {Sprite === 1 && <img src={ dedeImg2 } alt="" />}
+      {Sprite === 2 && <img src={ dedeImg3 } alt="" />}
       { loja && <Loja />}
       { apolo && <Apolo />}
       { config && <Configuracoes />}
       { stats && <Stats />}
-      <div
-        onClick={
-            () => dispatch(clickDede(mX * 1.2, dX))
-          }
-      >
-        {Sprite === 1 && <img src={ dedeImg2 } alt="" />}
-        {Sprite === 2 && <img src={ dedeImg3 } alt="" />}
-      </div>
+      { menu && <Menu />}
     </main>
   );
 }
