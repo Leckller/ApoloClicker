@@ -19,6 +19,7 @@ function Main() {
   timerReducer: { timerEnd } },
   apolo, loja, config, stats, menu } = useStoreHook();
   useEffect(() => {
+    // refatorar esse sistema aqui com urgencia
     const Timer = setTimeout(() => {
       dispatch(timerAction(Dinheiro));
       if (timerEnd) {
@@ -31,16 +32,18 @@ function Main() {
 
   return (
     <main
-      className="h-full"
+      className="h-full md:w-full md:flex md:flex-row"
       onClick={ () => dispatch(clickDede(mX * 1.2, dX)) }
     >
-      {Sprite === 1 && <img src={ dedeImg2 } alt="" />}
-      {Sprite === 2 && <img src={ dedeImg3 } alt="" />}
-      { loja && <Loja />}
-      { apolo && <Apolo />}
-      { config && <Configuracoes />}
-      { stats && <Stats />}
-      { menu && <Menu />}
+      {Sprite === 1 && <img src={ dedeImg2 } alt="" className="md:w-[70%]" />}
+      {Sprite === 2 && <img src={ dedeImg3 } alt="" className="md:w-[70%]" />}
+      <div className="h-full w-full md:w-[30%] md:text-xl text-white">
+        { loja && <Loja />}
+        { apolo && <Apolo />}
+        { config && <Configuracoes />}
+        { stats && <Stats />}
+        { menu && <Menu />}
+      </div>
     </main>
   );
 }

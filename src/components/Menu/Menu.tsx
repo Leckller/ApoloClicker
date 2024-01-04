@@ -5,7 +5,7 @@ import { setApolo, setConfig,
 function Menu() {
   const { dispatch } = useStoreHook();
   return (
-    <section className="bg-white w-full h-full flex flex-col gap-5 items-center">
+    <section className="bg-[#4b5451] w-full h-full flex flex-col gap-5 items-center">
 
       <article className="flex flex-row w-full justify-around">
 
