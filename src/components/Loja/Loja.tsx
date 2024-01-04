@@ -2,19 +2,14 @@ import { useStoreHook } from '../../Hooks/StoreHook';
 import { buyItem } from '../../redux/actions/ClickDedeAction';
 import { AdvocaciaProducts } from './Produtos';
 import { setLoja } from '../../redux/actions/LojasAction';
+import LayoutMenus from '../LayoutMenus';
 
 function Loja() {
   const { store: { ClickerReducer: { Dinheiro, Itens } }, dispatch } = useStoreHook();
 
   return (
-    <article
-      className="bg-white w-full justify-center pt-1 h-full overflow-auto
-    flex flex-row flex-wrap gap-1"
-    >
-      <div className="w-full pr-1 pl-1 flex flex-row justify-around">
-        <h2>Loja</h2>
-        <button onClick={ () => dispatch(setLoja()) }>X</button>
-      </div>
+
+    <LayoutMenus set={ setLoja } title="Loja">
       {AdvocaciaProducts.sort((a, b) => {
         if (a.preco < b.preco) return 1;
         return 0;
@@ -43,7 +38,7 @@ function Loja() {
             </div>
           </article>
         ))}
-    </article>
+    </LayoutMenus>
   );
 }
 

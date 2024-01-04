@@ -1,11 +1,13 @@
 /* eslint-disable no-alert */
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { clickDede } from '../../redux/actions/ClickDedeAction';
+import { setConfig } from '../../redux/actions/LojasAction';
+import LayoutMenus from '../LayoutMenus';
 
 function Configuracoes() {
   const { dispatch } = useStoreHook();
   return (
-    <article>
+    <LayoutMenus set={ setConfig } title="Configurações">
       <button
         onClick={ () => {
           setTimeout(() => {
@@ -24,7 +26,7 @@ function Configuracoes() {
       </h2>
       <button onClick={ () => alert('Para de ser pilantra') }>Hack</button>
 
-    </article>
+    </LayoutMenus>
   );
 }
 
