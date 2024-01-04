@@ -1,11 +1,10 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
-import { StatsSection } from './StatsStyle';
 
 function Stats() {
   const { store: { ClickerReducer: { cafeAtual, limiteCafe,
     ProducaoCafe, consumoCafe, energia, internet, dX, mX } } } = useStoreHook();
   return (
-    <StatsSection>
+    <section>
       <article>
         <h2>Coffe</h2>
         <h3>
@@ -46,7 +45,7 @@ function Stats() {
           {`${internet} Mega`}
         </h3>
       </article>
-    </StatsSection>
+    </section>
   );
 }
 

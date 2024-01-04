@@ -1,49 +1,62 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
-import { setApolo, setConfig, setLoja, setStats } from '../../redux/actions/LojasAction';
-import { BtnOptions } from '../StylesGerais';
-import { SectionMenuMobile } from './MenuStyle';
+import { setApolo, setConfig,
+  setLoja, setMenu, setStats } from '../../redux/actions/LojasAction';
 
 function Menu() {
   const { dispatch } = useStoreHook();
   return (
-    <SectionMenuMobile>
-      <article>
-        <button>{'<-'}</button>
+    <section className="bg-white absolute w-full h-1/2 flex flex-col gap-5 items-center">
+
+      <article className="flex flex-row w-full justify-around">
+
         <h1>Apolo Clicker Beta 0.5</h1>
-        <button>X</button>
+
+        <button onClick={ () => dispatch(setMenu()) }>X</button>
+
       </article>
-      <article>
-        <BtnOptions
+
+      <article className="flex flex-col gap-9">
+        <button
           onClick={ () => {
             dispatch(setLoja());
           } }
         >
           Loja
 
-        </BtnOptions>
-        <BtnOptions
+        </button>
+
+        <div className="border-b" />
+
+        <button
           onClick={ () => {
             dispatch(setApolo());
           } }
         >
           Apolo
-        </BtnOptions>
-        <BtnOptions
+        </button>
+
+        <div className="border-b" />
+
+        <button
           onClick={ () => {
             dispatch(setConfig());
           } }
         >
           Configurações
-        </BtnOptions>
-        <BtnOptions
+        </button>
+
+        <div className="border-b" />
+
+        <button
           onClick={ () => {
             dispatch(setStats());
           } }
         >
           stats
-        </BtnOptions>
+        </button>
       </article>
-    </SectionMenuMobile>
+
+    </section>
   );
 }
 

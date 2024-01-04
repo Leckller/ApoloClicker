@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { GlobalState } from '../types';
-import { autoClick, fatura } from '../redux/actions/ClickDedeAction';
-import { moneyGap, timerAction } from '../redux/actions/TimerAction';
+import { autoClick } from '../redux/actions/ClickDedeAction';
 
 export function useStoreHook() {
   const dispatch = useDispatch();
@@ -10,13 +9,6 @@ export function useStoreHook() {
   const { LojasReducer: { apolo, loja, config, stats, menu },
     ClickerReducer: { internet } } = store;
   useEffect(() => {
-    const Timer = setTimeout(() => {
-      dispatch(timerAction(store.ClickerReducer.Dinheiro));
-      if (store.timerReducer.timerEnd) {
-        dispatch(moneyGap(store.ClickerReducer.Dinheiro));
-        dispatch(fatura());
-      }
-    }, 1000);
     const Dede = setTimeout(() => {
       const { ClickerReducer: { dX, mX } } = store;
       const { cafeAtual, ProducaoCafe, consumoCafe, limiteCafe } = store.ClickerReducer;
@@ -30,7 +22,6 @@ export function useStoreHook() {
       // mx multiplicador, dX dinheiro multiplicado
     }, ((1000 - internet) >= 500 ? 1000 - internet : 500));
     return () => {
-      clearTimeout(Timer);
       clearTimeout(Dede);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps

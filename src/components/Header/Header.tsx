@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { DivBlockHPadrao, HeaderS, HeaderSMobile } from './HeaderStyle';
 import { GlobalState } from '../../types';
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { setMenu } from '../../redux/actions/LojasAction';
@@ -8,52 +7,31 @@ function Header() {
   const { dispatch } = useStoreHook();
   const { ClickerReducer: { Dinheiro }, timerReducer,
   } = useSelector((state: GlobalState) => state);
-  if (window.innerWidth <= 420) {
-    return (
-      <HeaderSMobile>
-        <button onClick={ () => dispatch(setMenu()) }>=</button>
-        <div>
-          <section>
-            <h2>
-              {`R$ ${Dinheiro.toFixed(2)}`}
-            </h2>
-            <div>
-              <h2>
-                {`Dia ${timerReducer.dias} - 
+
+  return (
+    <header
+      className="flex flex-row flex-nowrap w-full justify-around text-white
+        p-3"
+    >
+      <button
+        className="w-1/2 text-center"
+        onClick={ () => dispatch(setMenu()) }
+      >
+        Menu
+      </button>
+
+      <div className="w-1/2 text-center">
+        <h2>
+          {`R$ ${Dinheiro.toFixed(2)}`}
+        </h2>
+
+        <h2>
+          {`Dia ${timerReducer.dias} - 
               1${timerReducer.minutes}:${timerReducer.seconds
               < 10 ? `0${timerReducer.seconds}` : timerReducer.seconds}`}
-              </h2>
-            </div>
-          </section>
-        </div>
-      </HeaderSMobile>
-    );
-  }
-  return (
-    <HeaderS>
-      <DivBlockHPadrao>
-        <button
-          onClick={ () => {
-            localStorage.removeItem('Clicks');
-            // eslint-disable-next-line no-restricted-globals
-            location.reload();
-          } }
-        >
-          Configurações
-
-        </button>
-      </DivBlockHPadrao>
-      <div>
-        <h1>Apolo Clicker Beta 0.5</h1>
-      </div>
-      <DivBlockHPadrao>
-        <h2>
-          {
-        `R$ ${Dinheiro.toFixed(2)}`
-        }
         </h2>
-      </DivBlockHPadrao>
-    </HeaderS>
+      </div>
+    </header>
   );
 }
 

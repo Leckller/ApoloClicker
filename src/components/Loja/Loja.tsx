@@ -1,27 +1,22 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { buyItem } from '../../redux/actions/ClickDedeAction';
 import { setLoja } from '../../redux/actions/LojasAction';
-import { ArticleMenusMobile } from '../Menu/MenuStyle';
-import { DivProduct, DivProductMobile,
-  DivProducts, DivProductsMobile, DivProductsNFilters,
-  DivProductsNFiltersMobile,
-  LojaDivHeader, LojaSection } from './LojaStyle';
 import { AdvocaciaProducts } from './Produtos';
 
 function Loja() {
   const { store: { ClickerReducer: { Dinheiro, Itens } }, dispatch } = useStoreHook();
   if (window.innerWidth <= 420) {
     return (
-      <ArticleMenusMobile>
-        <DivProductsNFiltersMobile>
-          <DivProductsMobile>
+      <article>
+        <div>
+          <div>
             {AdvocaciaProducts.sort((a, b) => {
               if (a.preco < b.preco) return 1;
               return 0;
             }).filter((e) => Itens
               .find((ef) => ef.name === e.name)?.name !== e.name)
               .map((e) => (
-                <DivProductMobile key={ e.id }>
+                <div key={ e.id }>
 
                   <h3>{e.name}</h3>
                   <img src={ e.imagem } alt={ `Imagem de ${e.name}` } />
@@ -35,16 +30,16 @@ function Loja() {
                   >
                     Comprar
                   </button>
-                </DivProductMobile>
+                </div>
               ))}
-          </DivProductsMobile>
-        </DivProductsNFiltersMobile>
-      </ArticleMenusMobile>
+          </div>
+        </div>
+      </article>
     );
   }
   return (
-    <LojaSection>
-      <LojaDivHeader>
+    <section>
+      <div>
         <h2>{`R$ ${Dinheiro.toFixed(2)}`}</h2>
         <h1>
           Actual Filter
@@ -54,16 +49,16 @@ function Loja() {
         >
           X
         </button>
-      </LojaDivHeader>
-      <DivProductsNFilters>
-        <DivProducts>
+      </div>
+      <div>
+        <div>
           {AdvocaciaProducts.sort((a, b) => {
             if (a.preco < b.preco) return 1;
             return 0;
           }).filter((e) => Itens
             .find((ef) => ef.name === e.name)?.name !== e.name)
             .map((e) => (
-              <DivProduct key={ e.id }>
+              <div key={ e.id }>
 
                 <h3>{e.name}</h3>
                 <img src={ e.imagem } alt={ `Imagem de ${e.name}` } />
@@ -77,11 +72,11 @@ function Loja() {
                 >
                   Comprar
                 </button>
-              </DivProduct>
+              </div>
             ))}
-        </DivProducts>
-      </DivProductsNFilters>
-    </LojaSection>
+        </div>
+      </div>
+    </section>
   );
 }
 

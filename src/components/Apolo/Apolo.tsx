@@ -1,24 +1,20 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { levelUp, sellItem } from '../../redux/actions/ClickDedeAction';
 import { setApolo } from '../../redux/actions/LojasAction';
-import { ArticleMenusMobile } from '../Menu/MenuStyle';
-import { ApoloDivContent, ApoloDivContentMobile, ApoloDivHeader,
-  ApoloProducts, ApoloProductsMobile, ApoloSection, DivApoloBox,
-  DivApoloBoxMobile } from './ApoloStyle';
 
 function Apolo() {
   const { store: { ClickerReducer: { Itens, Dinheiro } }, dispatch } = useStoreHook();
   if (window.innerWidth <= 420) {
     return (
-      <ArticleMenusMobile>
-        <DivApoloBoxMobile>
-          <ApoloDivContentMobile>
+      <div>
+        <div>
+          <div>
             {Itens.sort((a, b) => {
               if (a.preco < b.preco) return 1;
               return 0;
             }).map((e, i) => (
               // preciso da imagem
-              <ApoloProductsMobile key={ i }>
+              <div key={ i }>
                 <h2>{`${e.name} - level ${e.level}`}</h2>
                 <button
                   onClick={ () => dispatch(levelUp(e)) }
@@ -36,16 +32,16 @@ function Apolo() {
                 >
                   {`Vender por ${(e.preco * e.level) / 4}`}
                 </button>
-              </ApoloProductsMobile>
+              </div>
             ))}
-          </ApoloDivContentMobile>
-        </DivApoloBoxMobile>
-      </ArticleMenusMobile>
+          </div>
+        </div>
+      </div>
     );
   }
   return (
-    <ApoloSection>
-      <ApoloDivHeader>
+    <div>
+      <div>
         <h1>
           Apolo
         </h1>
@@ -54,15 +50,15 @@ function Apolo() {
         >
           X
         </button>
-      </ApoloDivHeader>
-      <DivApoloBox>
-        <ApoloDivContent>
+      </div>
+      <div>
+        <div>
           {Itens.sort((a, b) => {
             if (a.preco < b.preco) return 1;
             return 0;
           }).map((e, i) => (
           // preciso da imagem
-            <ApoloProducts key={ i }>
+            <div key={ i }>
               <h2>{`${e.name} - level ${e.level}`}</h2>
               <button
                 onClick={ () => dispatch(levelUp(e)) }
@@ -76,11 +72,11 @@ function Apolo() {
               >
                 {`Vender por ${e.preco * 0.5}`}
               </button>
-            </ApoloProducts>
+            </div>
           ))}
-        </ApoloDivContent>
-      </DivApoloBox>
-    </ApoloSection>
+        </div>
+      </div>
+    </div>
   );
 }
 
