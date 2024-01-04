@@ -14,12 +14,13 @@ function Apolo() {
         // preciso da imagem
         <div
           key={ i }
-          className="flex flex-col gap-5 items-center w-[200px]"
+          className="flex flex-col gap-5 items-center w-[200px] pt-1 pb-3
+           border rounded-lg text-center"
         >
 
-          <h2>{`${e.name} - level ${e.level}`}</h2>
+          <h2 className="h-14">{`${e.name} - level ${e.level}`}</h2>
           <button
-            className="disabled:bg-red-200 pl-2 pr-2 rounded-lg w-[90%] bg-green-200"
+            className="disabled:bg-red-200 pl-2 pr-2 rounded-lg w-[90%] p-2 bg-green-200"
             onClick={ () => dispatch(levelUp(e)) }
             disabled={ Dinheiro < e.preco + (e.preco / 2) * e.level }
           >
@@ -27,7 +28,7 @@ function Apolo() {
               e.preco + (e.preco / 2) * e.level}`}
           </button>
           <button
-            className="pl-2 pr-2 rounded-lg bg-yellow-200 w-[90%]"
+            className="pl-2 pr-2 rounded-lg bg-yellow-200 w-[90%] p-2"
             onClick={ () => (
               dispatch(sellItem(
                 e, (

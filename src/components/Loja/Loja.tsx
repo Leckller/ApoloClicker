@@ -18,7 +18,7 @@ function Loja() {
         .map((e) => (
           <article
             key={ e.id }
-            className="w-[200px] gap-2 h-1/3 flex flex-col text-center mb-5 border"
+            className="w-[200px] gap-2 h-1/2 flex flex-col text-center mb-5 border"
           >
 
             <h3>{e.name}</h3>

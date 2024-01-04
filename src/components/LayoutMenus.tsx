@@ -8,8 +8,8 @@ function LayoutMenus({ children, set, title }:
 
   return (
     <article
-      className="bg-white w-full justify-center pt-1 h-full overflow-auto
-    flex flex-row flex-wrap gap-1"
+      className="bg-white w-full pt-1 h-full
+    flex flex-col flex-wrap gap-1"
     >
       <div
         className="w-full flex flex-row flex-nowrap h-16 items-center
@@ -18,7 +18,12 @@ function LayoutMenus({ children, set, title }:
         <h2>{title}</h2>
         <button onClick={ () => dispatch(set()) }>X</button>
       </div>
-      {children}
+      <div
+        className="w-full h-[55%] flex flex-row flex-wrap justify-center
+         overflow-auto gap-1"
+      >
+        {children}
+      </div>
     </article>
   );
 }
