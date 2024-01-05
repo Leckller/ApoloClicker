@@ -1,85 +1,45 @@
 import { useStoreHook } from '../../Hooks/StoreHook';
 import { levelUp, sellItem } from '../../redux/actions/ClickDedeAction';
 import { setApolo } from '../../redux/actions/LojasAction';
-import { ApoloDivContent, ApoloDivContentMobile, ApoloDivHeader,
-  ApoloProducts, ApoloProductsMobile, ApoloSection, ApoloSectionMobile, DivApoloBox,
-  DivApoloBoxMobile } from './ApoloStyle';
+import LayoutMenus from '../LayoutMenus';
 
 function Apolo() {
   const { store: { ClickerReducer: { Itens, Dinheiro } }, dispatch } = useStoreHook();
-  if (window.innerWidth <= 420) {
-    return (
-      <ApoloSectionMobile>
-        <DivApoloBoxMobile>
-          <ApoloDivContentMobile>
-            {Itens.sort((a, b) => {
-              if (a.preco < b.preco) return 1;
-              return 0;
-            }).map((e, i) => (
-              // preciso da imagem
-              <ApoloProductsMobile key={ i }>
-                <h2>{`${e.name} - level ${e.level}`}</h2>
-                <button
-                  onClick={ () => dispatch(levelUp(e)) }
-                  disabled={ Dinheiro < e.preco + (e.preco / 2) * e.level }
-                >
-                  {`Melhorar - R$${
-                    e.preco + (e.preco / 2) * e.level}`}
-                </button>
-                <button
-                  onClick={ () => (
-                    dispatch(sellItem(
-                      e, (
-                        (e.preco * e.level) / 4),
-                    ))) }
-                >
-                  {`Vender por ${(e.preco * e.level) / 4}`}
-                </button>
-              </ApoloProductsMobile>
-            ))}
-          </ApoloDivContentMobile>
-        </DivApoloBoxMobile>
-      </ApoloSectionMobile>
-    );
-  }
   return (
-    <ApoloSection>
-      <ApoloDivHeader>
-        <h1>
-          Apolo
-        </h1>
-        <button
-          onClick={ () => dispatch(setApolo()) }
+    <LayoutMenus set={ setApolo } title="Apolo">
+      {Itens.sort((a, b) => {
+        if (a.preco < b.preco) return 1;
+        return 0;
+      }).map((e, i) => (
+        // preciso da imagem
+        <div
+          key={ i }
+          className="flex flex-col gap-5 items-center w-[200px] pt-1 pb-3
+           border rounded-lg text-center"
         >
-          X
-        </button>
-      </ApoloDivHeader>
-      <DivApoloBox>
-        <ApoloDivContent>
-          {Itens.sort((a, b) => {
-            if (a.preco < b.preco) return 1;
-            return 0;
-          }).map((e, i) => (
-          // preciso da imagem
-            <ApoloProducts key={ i }>
-              <h2>{`${e.name} - level ${e.level}`}</h2>
-              <button
-                onClick={ () => dispatch(levelUp(e)) }
-                disabled={ Dinheiro < e.preco + (e.preco / 2) * e.level }
-              >
-                {`Melhorar - R$${
-                  e.preco + (e.preco / 2) * e.level}`}
-              </button>
-              <button
-                onClick={ () => dispatch(sellItem(e, (e.preco * 0.5))) }
-              >
-                {`Vender por ${e.preco * 0.5}`}
-              </button>
-            </ApoloProducts>
-          ))}
-        </ApoloDivContent>
-      </DivApoloBox>
-    </ApoloSection>
+
+          <h2 className="h-14">{`${e.name} - level ${e.level}`}</h2>
+          <button
+            className="disabled:bg-red-200 pl-2 pr-2 rounded-lg w-[90%] p-2 bg-green-200"
+            onClick={ () => dispatch(levelUp(e)) }
+            disabled={ Dinheiro < e.preco + (e.preco / 2) * e.level }
+          >
+            {`Melhorar - R$${
+              e.preco + (e.preco / 2) * e.level}`}
+          </button>
+          <button
+            className="pl-2 pr-2 rounded-lg bg-yellow-200 w-[90%] p-2"
+            onClick={ () => (
+              dispatch(sellItem(
+                e, (
+                  (e.preco * e.level) / 4),
+              ))) }
+          >
+            {`Vender por ${(e.preco * e.level) / 4}`}
+          </button>
+        </div>
+      ))}
+    </LayoutMenus>
   );
 }
 
