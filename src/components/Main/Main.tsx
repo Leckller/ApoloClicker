@@ -20,14 +20,11 @@ function Main() {
   apolo, loja, config, stats, menu } = useStoreHook();
   useEffect(() => {
     // refatorar esse sistema aqui com urgencia
-    const Timer = setTimeout(() => {
-      dispatch(timerAction(Dinheiro));
-      if (timerEnd) {
-        dispatch(moneyGap(Dinheiro));
-        dispatch(fatura());
-      }
-    }, 1000);
-    return clearTimeout(Timer);
+    dispatch(timerAction(Dinheiro));
+    if (timerEnd) {
+      dispatch(moneyGap(Dinheiro));
+      dispatch(fatura());
+    }
   }, [DinheiroPassivo]);
 
   return (
