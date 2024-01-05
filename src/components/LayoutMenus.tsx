@@ -20,7 +20,7 @@ function LayoutMenus({ children, set, title }:
       </div>
       <div
         className="w-full h-[55%] flex flex-row flex-wrap justify-center
-         overflow-auto gap-1 text-black"
+         overflow-auto gap-1 "
       >
         {children}
       </div>

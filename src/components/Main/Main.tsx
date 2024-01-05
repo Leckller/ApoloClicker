@@ -37,7 +37,11 @@ function Main() {
     >
       {Sprite === 1 && <img src={ dedeImg2 } alt="" className="md:w-[70%]" />}
       {Sprite === 2 && <img src={ dedeImg3 } alt="" className="md:w-[70%]" />}
-      <div className="h-full w-full md:w-[30%] md:text-xl text-white">
+      <div className="-z-10 bg-[#4b5451] absolute right-0 md:w-[30%] md:h-full" />
+      <div
+        className="h-full w-full md:w-[30%] md:text-xl text-white
+      "
+      >
         { loja && <Loja />}
         { apolo && <Apolo />}
         { config && <Configuracoes />}

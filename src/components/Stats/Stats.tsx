@@ -28,7 +28,7 @@ function Stats() {
         )}
       </div>
 
-      <div className="flex flex-row text-center gap-5 mb-10">
+      <div className="flex flex-col text-center gap-5 mb-10">
         <div className="flex flex-col items-center justify-center">
           <h2>Próxima Fatura</h2>
           <h3>
